@@ -1,15 +1,18 @@
-## Interface: 110002
-## Title: |cFF00D4FFAzeroth Pilot|r |cFFFFD700Reloaded Pro|r
-## Notes: STUNNING UI! PTR-Integrated! All Professions! Achievements! Gold Guides! Better than Zygor - 100% FREE!
-## Author: Azeroth Pilot Pro Team
+## Interface: 110002, 110005, 110007, 110200, 110205, 110207, 40400, 11502, 11503
+## Title: |cFF00D4FFQuest|r|cFFFFD700Master Pro|r
+## Notes: STUNNING UI! PTR-Integrated! All Professions! Achievements! Gold! M+! Better than Zygor - 100% FREE!
+## Author: QuestMaster Pro Team
 ## Version: 1.0.0
-## SavedVariables: AzerothPilotDB
-## SavedVariablesPerCharacter: AzerothPilotCharDB
+## SavedVariables: QuestMasterProDB
+## SavedVariablesPerCharacter: QuestMasterProCharDB
 ## X-Category: Questing
 ## X-Website: https://github.com/SpidermanTotro/azeroth-pilot-reloaded-Pro-
-## X-Curse-Project-ID: azeroth-pilot-reloaded-pro
-## X-WoWI-ID: azeroth-pilot-reloaded-pro
-## X-Features: Stunning Modern UI, PTR Integration, Auto-Learning, Legion Remix, Complete Coverage, Professions, Achievements, Gold Making, Pet Battles, Mount Farming
+## X-Curse-Project-ID: questmaster-pro
+## X-WoWI-ID: questmaster-pro
+## X-Wago-ID: questmaster-pro
+## X-Features: Stunning Modern UI, PTR Integration, Auto-Learning, Legion Remix, Complete Coverage, All Zones, All Classes, Professions, Achievements, Gold Making, Pet Battles, Mount Farming, Mythic+ Guides
+## X-License: GPL-3.0
+## IconTexture: Interface\Icons\INV_Misc_Book_09
 
 # Core Files
 Core\Init.lua
