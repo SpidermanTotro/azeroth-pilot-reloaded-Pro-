@@ -6,6 +6,16 @@ AzerothPilot = AzerothPilot or {}
 AzerothPilot.Version = "1.0.0"
 AzerothPilot.BuildDate = "2025-11-09"
 
+-- Backwards/forwards compatibility: some modules reference QuestMasterPro while core uses AzerothPilot.
+-- Ensure a shared table exists so both sets of modules work regardless of folder name.
+if not QuestMasterPro then
+    QuestMasterPro = AzerothPilot
+end
+
+-- SavedVariables aliasing (safe no-op if globals already assigned by TOC)
+if not QuestMasterProDB and AzerothPilotDB then QuestMasterProDB = AzerothPilotDB end
+if not QuestMasterProCharDB and AzerothPilotCharDB then QuestMasterProCharDB = AzerothPilotCharDB end
+
 -- Initialize core modules
 AzerothPilot.Core = {}
 AzerothPilot.UI = {}
@@ -45,7 +55,7 @@ end
 
 -- Print function
 function AzerothPilot:Print(msg)
-    print("|cFF00FF00[Azeroth Pilot Pro]|r " .. tostring(msg))
+    print("|cFF00FF00[QuestMaster Pro]|r " .. tostring(msg))
 end
 
 -- Debug print function
@@ -63,7 +73,8 @@ AzerothPilot.EventFrame:RegisterEvent("PLAYER_LOGIN")
 AzerothPilot.EventFrame:SetScript("OnEvent", function(self, event, ...)
     if event == "ADDON_LOADED" then
         local addonName = ...
-        if addonName == "AzerothPilotReloadedPro" then
+        -- support both old and new folder names so users can rename the folder without breaking
+        if addonName == "AzerothPilotReloadedPro" or addonName == "QuestMasterPro" then
             AzerothPilot:Initialize()
         end
     elseif event == "PLAYER_LOGIN" then
@@ -71,11 +82,4 @@ AzerothPilot.EventFrame:SetScript("OnEvent", function(self, event, ...)
     end
 end)
 
-function AzerothPilot:OnPlayerLogin()
-    self:Print("Welcome! Type /ap or /azerothpilot for commands")
-    
-    -- Auto-start guide if configured
-    if AzerothPilotDB.enabled and AzerothPilotCharDB.currentGuide then
-        self:DebugPrint("Resuming guide: " .. tostring(AzerothPilotCharDB.currentGuide))
-    end
-end
+-- OnPlayerLogin is implemented in Main.lua (single authoritative implementation)

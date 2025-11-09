@@ -77,7 +77,7 @@ function ModernUI:CreateMainWindow()
     -- Beautiful gradient overlay
     local bg = frame:CreateTexture(nil, "BACKGROUND")
     bg:SetAllPoints()
-    bg:SetTexture("Interface\\AddOns\\AzerothPilotReloadedPro\\Textures\\GradientBG")
+    bg:SetTexture("Interface\\AddOns\\QuestMasterPro\\Textures\\GradientBG")
     bg:SetVertexColor(unpack(self.Colors.background.solid))
     bg:SetGradientAlpha("VERTICAL", 
         unpack(self.Colors.background.gradient_top),
@@ -91,7 +91,7 @@ function ModernUI:CreateMainWindow()
     header:SetPoint("TOPLEFT", 8, -8)
     header:SetPoint("TOPRIGHT", -8, -8)
     header:SetHeight(60)
-    header:SetTexture("Interface\\AddOns\\AzerothPilotReloadedPro\\Textures\\HeaderGradient")
+    header:SetTexture("Interface\\AddOns\\QuestMasterPro\\Textures\\HeaderGradient")
     header:SetVertexColor(0.0, 0.6, 0.9, 0.4)
     
     -- Logo/Icon (STUNNING)
@@ -107,7 +107,7 @@ function ModernUI:CreateMainWindow()
     local title = frame:CreateFontString(nil, "OVERLAY")
     title:SetPoint("LEFT", logo, "RIGHT", 15, 5)
     title:SetFont(self.Fonts.huge, 24, "OUTLINE")
-    title:SetText("Azeroth Pilot |cFF00D4FFPro|r")
+    title:SetText("QuestMaster |cFF00D4FFPro|r")
     title:SetTextColor(1, 1, 1, 1)
     
     -- Subtitle
@@ -184,7 +184,7 @@ function ModernUI:CreateProgressBar(parent)
     -- Shimmer effect overlay
     local shimmer = container:CreateTexture(nil, "OVERLAY")
     shimmer:SetAllPoints(progress)
-    shimmer:SetTexture("Interface\\AddOns\\AzerothPilotReloadedPro\\Textures\\Shimmer")
+    shimmer:SetTexture("Interface\\AddOns\\QuestMasterPro\\Textures\\Shimmer")
     shimmer:SetBlendMode("ADD")
     shimmer:SetAlpha(0.3)
     
@@ -484,7 +484,7 @@ function ModernUI:CreateMinimapButton()
     -- Tooltip
     btn:SetScript("OnEnter", function(self)
         GameTooltip:SetOwner(self, "ANCHOR_LEFT")
-        GameTooltip:SetText("|cFF00D4FFAzeroth Pilot Pro|r", 1, 1, 1)
+    GameTooltip:SetText("|cFF00D4FFQuestMaster Pro|r", 1, 1, 1)
         GameTooltip:AddLine("Left-click: Toggle Guide", 0.8, 0.8, 0.85)
         GameTooltip:AddLine("Right-click: Settings", 0.8, 0.8, 0.85)
         GameTooltip:AddLine(" ", 1, 1, 1)
