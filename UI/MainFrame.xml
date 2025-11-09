@@ -1,0 +1,105 @@
+<Ui xmlns="http://www.blizzard.com/wow/ui/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.blizzard.com/wow/ui/">
+    
+    <!-- Main Guide Frame -->
+    <Frame name="AzerothPilotMainFrame" parent="UIParent" movable="true" enableMouse="true" hidden="false">
+        <Size x="400" y="300"/>
+        <Anchors>
+            <Anchor point="CENTER"/>
+        </Anchors>
+        
+        <Backdrop bgFile="Interface\DialogFrame\UI-DialogBox-Background" edgeFile="Interface\DialogFrame\UI-DialogBox-Border" tile="true">
+            <EdgeSize>
+                <AbsValue val="32"/>
+            </EdgeSize>
+            <TileSize>
+                <AbsValue val="32"/>
+            </TileSize>
+            <BackgroundInsets>
+                <AbsInset left="11" right="12" top="12" bottom="11"/>
+            </BackgroundInsets>
+        </Backdrop>
+        
+        <Layers>
+            <Layer level="ARTWORK">
+                <FontString name="$parentTitle" inherits="GameFontNormalLarge">
+                    <Anchors>
+                        <Anchor point="TOP" relativePoint="TOP">
+                            <Offset x="0" y="-15"/>
+                        </Anchor>
+                    </Anchors>
+                </FontString>
+                
+                <FontString name="$parentStepText" inherits="GameFontNormal" justifyH="LEFT">
+                    <Size x="360" y="0"/>
+                    <Anchors>
+                        <Anchor point="TOPLEFT" relativePoint="TOPLEFT">
+                            <Offset x="20" y="-50"/>
+                        </Anchor>
+                    </Anchors>
+                </FontString>
+                
+                <FontString name="$parentCoordText" inherits="GameFontNormalSmall">
+                    <Anchors>
+                        <Anchor point="BOTTOMLEFT" relativePoint="BOTTOMLEFT">
+                            <Offset x="20" y="50"/>
+                        </Anchor>
+                    </Anchors>
+                </FontString>
+            </Layer>
+        </Layers>
+        
+        <Frames>
+            <!-- Close Button -->
+            <Button name="$parentCloseButton" inherits="UIPanelCloseButton">
+                <Anchors>
+                    <Anchor point="TOPRIGHT" relativePoint="TOPRIGHT">
+                        <Offset x="-5" y="-5"/>
+                    </Anchor>
+                </Anchors>
+            </Button>
+            
+            <!-- Next Button -->
+            <Button name="$parentNextButton" inherits="UIPanelButtonTemplate">
+                <Size x="100" y="25"/>
+                <Anchors>
+                    <Anchor point="BOTTOMRIGHT" relativePoint="BOTTOMRIGHT">
+                        <Offset x="-20" y="15"/>
+                    </Anchor>
+                </Anchors>
+                <Scripts>
+                    <OnClick>
+                        AzerothPilot.UI.MainFrame:OnNextButtonClick()
+                    </OnClick>
+                </Scripts>
+            </Button>
+            
+            <!-- Previous Button -->
+            <Button name="$parentPrevButton" inherits="UIPanelButtonTemplate">
+                <Size x="100" y="25"/>
+                <Anchors>
+                    <Anchor point="BOTTOMLEFT" relativePoint="BOTTOMLEFT">
+                        <Offset x="20" y="15"/>
+                    </Anchor>
+                </Anchors>
+                <Scripts>
+                    <OnClick>
+                        AzerothPilot.UI.MainFrame:OnPrevButtonClick()
+                    </OnClick>
+                </Scripts>
+            </Button>
+        </Frames>
+        
+        <Scripts>
+            <OnLoad>
+                AzerothPilot.UI.MainFrame:OnLoad()
+            </OnLoad>
+            <OnDragStart>
+                self:StartMoving()
+            </OnDragStart>
+            <OnDragStop>
+                self:StopMovingOrSizing()
+            </OnDragStop>
+        </Scripts>
+    </Frame>
+    
+</Ui>

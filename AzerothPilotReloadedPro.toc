@@ -1,0 +1,34 @@
+## Interface: 110002
+## Title: Azeroth Pilot Reloaded Pro
+## Notes: The ultimate leveling guide addon for World of Warcraft - ahead of the game for 2025!
+## Author: Azeroth Pilot Team
+## Version: 1.0.0
+## SavedVariables: AzerothPilotDB
+## SavedVariablesPerCharacter: AzerothPilotCharDB
+## X-Category: Questing
+## X-Website: https://github.com/SpidermanTotro/azeroth-pilot-reloaded-Pro-
+## X-Curse-Project-ID: azeroth-pilot-reloaded-pro
+## X-WoWI-ID: azeroth-pilot-reloaded-pro
+
+# Core Files
+Core\Init.lua
+Core\Database.lua
+Core\Utils.lua
+
+# UI Files
+UI\MainFrame.xml
+UI\SettingsPanel.lua
+UI\Arrow.lua
+
+# Guide System
+Guides\GuideEngine.lua
+Guides\QuestTracker.lua
+Guides\Waypoints.lua
+
+# Data
+Data\Zones.lua
+Data\Quests.lua
+Data\Routes.lua
+
+# Main
+Main.lua
