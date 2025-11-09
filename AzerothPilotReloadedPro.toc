@@ -34,10 +34,13 @@ Guides\Waypoints.lua
 
 # Data - COMPLETE Coverage!
 Data\Zones.lua
+Data\CompleteZones.lua
 Data\Quests.lua
 Data\Routes.lua
 Data\LegionRoutes.lua
 Data\ProfessionGuides.lua
+Data\ClassGuides.lua
+Data\MythicPlusGuides.lua
 Data\AdvancedGuides.lua
 
 # Main
