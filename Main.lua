@@ -6,6 +6,11 @@ SLASH_AZEROTHPILOT1 = "/ap"
 SLASH_AZEROTHPILOT2 = "/azerothpilot"
 SLASH_AZEROTHPILOT3 = "/app"
 
+-- QuestMaster Pro commands
+SLASH_QUESTMASTER1 = "/qmp"
+SLASH_QUESTMASTER2 = "/questmaster"
+SLASH_QUESTMASTER3 = "/qmpro"
+
 function SlashCmdList.AZEROTHPILOT(msg)
     local command, arg = msg:match("^(%S*)%s*(.-)$")
     command = command:lower()
@@ -40,6 +45,55 @@ function SlashCmdList.AZEROTHPILOT(msg)
     else
         AzerothPilot:Print("Unknown command: " .. command)
         AzerothPilot:ShowHelp()
+    end
+end
+
+-- QuestMaster Pro unified command handler
+function SlashCmdList.QUESTMASTER(msg)
+    local command, arg = msg:match("^(%S*)%s*(.-)$")
+    command = command:lower()
+    
+    if command == "" or command == "help" then
+        print("|cFF00D4FF╔════════════════════════════════════════════╗|r")
+        print("|cFF00D4FF║|r  |cFF00D4FFQuest|r|cFFFFD700Master Pro|r Commands  |cFF00D4FF║|r")
+        print("|cFF00D4FF╚════════════════════════════════════════════╝|r")
+        print(" ")
+        print("|cFFFFD700Guide System:|r")
+        print("  /qmp start [guide] - Start leveling guide")
+        print("  /qmp stop - Stop current guide")
+        print("  /qmp guides - List available guides")
+        print(" ")
+        print("|cFFFFD700NEW Features:|r")
+        print("  /xptrack toggle - XP/Min tracker")
+        print("  /travel hearth - Check hearthstone")
+        print("  /skipquest analyze - Analyze quests")
+        print("  /gear toggle - Gear advisor")
+        print("  /notify test - Test notifications")
+        print(" ")
+        print("|cFFFFD700Settings:|r")
+        print("  /qmp config - Open settings panel")
+        print("  /qmp version - Show version info")
+    elseif command == "version" or command == "v" then
+        print("|cFF00D4FF╔════════════════════════════════════════════╗|r")
+        print("|cFF00D4FF║|r  |cFF00D4FFQuest|r|cFFFFD700Master Pro|r v1.0.0  |cFF00D4FF║|r")
+        print("|cFF00D4FF╚════════════════════════════════════════════╝|r")
+        print(" ")
+        print("|cFF00FF00CRUSHING THE COMPETITION:|r")
+        print("  vs Zygor: Better UI, FREE (save $120/yr)")
+        print("  vs RestedXP: More features, no paywall")
+        print("  vs Dugi: More reliable, open source")
+        print(" ")
+        print("|cFFFFD700NEW in v1.0:|r")
+        print("  ✓ Auto Hearth Optimizer")
+        print("  ✓ Smart Quest Skip Logic")
+        print("  ✓ Intelligent Notifications")
+        print("  ✓ Gear Upgrade Advisor")
+        print("  ✓ XP/Min Tracker")
+        print(" ")
+        print("Type |cFFFFD700/qmp help|r for all commands")
+    else
+        -- Delegate to regular handler
+        SlashCmdList.AZEROTHPILOT(msg)
     end
 end
 
@@ -175,17 +229,28 @@ function AzerothPilot:OnPlayerLogin()
     -- Initialize STUNNING Modern UI
     AzerothPilot.UI.Modern:Initialize()
     
+    -- Initialize NEW GAME-CHANGING Features!
+    if QuestMasterPro.Travel then QuestMasterPro.Travel:Initialize() end
+    if QuestMasterPro.QuestSkip then QuestMasterPro.QuestSkip:Initialize() end
+    if QuestMasterPro.Notifications then QuestMasterPro.Notifications:Initialize() end
+    if QuestMasterPro.GearAdvisor then QuestMasterPro.GearAdvisor:Initialize() end
+    if QuestMasterPro.XPTracker then QuestMasterPro.XPTracker:Initialize() end
+    
     -- Show welcome message
     self:Print("╔════════════════════════════════════════════╗")
-    self:Print("║  |cFF00D4FFAzeroth Pilot|r |cFFFFD700Reloaded Pro|r  ║")
+    self:Print("║  |cFF00D4FFQuest|r|cFFFFD700Master Pro|r v1.0  ║")
     self:Print("╚════════════════════════════════════════════╝")
     self:Print(" ")
     self:Print("|cFF00FF00✓|r STUNNING Modern UI - Better than Zygor!")
     self:Print("|cFF00FF00✓|r ALL Professions, Achievements, Gold Guides!")
     self:Print("|cFF00FF00✓|r PTR Integration - Always ahead!")
+    self:Print("|cFF00FF00✓ NEW:|r Auto Hearth Optimizer!")
+    self:Print("|cFF00FF00✓ NEW:|r Smart Quest Skip Logic!")
+    self:Print("|cFF00FF00✓ NEW:|r Gear Upgrade Advisor!")
+    self:Print("|cFF00FF00✓ NEW:|r XP/Min Tracker!")
     self:Print("|cFF00FF00✓|r 100% FREE - Save $120/year!")
     self:Print(" ")
-    self:Print("Type |cFFFFD700/ap|r for commands  |  Click minimap button to start!")
+    self:Print("Type |cFFFFD700/qmp|r for commands  |  |cFFFFD700/xptrack toggle|r for XP tracker!")
     
     -- Resume guide if active
     if AzerothPilotCharDB.currentGuide then

@@ -19,6 +19,11 @@ Core\Init.lua
 Core\Database.lua
 Core\Utils.lua
 Core\PTRIntegration.lua
+Core\TravelOptimizer.lua
+Core\QuestSkipLogic.lua
+Core\SmartNotifications.lua
+Core\GearAdvisor.lua
+Core\XPTracker.lua
 
 # UI Files - STUNNING Modern Interface!
 UI\MainFrame.xml
