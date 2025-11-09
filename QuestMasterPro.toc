@@ -6,7 +6,7 @@
 ## SavedVariables: AzerothPilotDB
 ## SavedVariablesPerCharacter: AzerothPilotCharDB
 ## X-Category: Questing
-## X-Website: https://github.com/SpidermanTotro/azeroth-pilot-reloaded-Pro-
+## X-Website: https://github.com/SpidermanTotro/QuestMasterPro
 ## X-Curse-Project-ID: questmaster-pro
 ## X-WoWI-ID: questmaster-pro
 ## X-Wago-ID: questmaster-pro

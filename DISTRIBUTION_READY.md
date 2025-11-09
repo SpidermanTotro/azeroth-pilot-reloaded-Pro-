@@ -18,7 +18,7 @@
 ### Option 2: Direct Clone
 ```bash
 cd "World of Warcraft/Interface/AddOns/"
-git clone https://github.com/SpidermanTotro/azeroth-pilot-reloaded-Pro-.git QuestMasterPro
+git clone https://github.com/SpidermanTotro/QuestMasterPro.git QuestMasterPro
 ```
 
 ### Option 3: CurseForge (After Submission)
