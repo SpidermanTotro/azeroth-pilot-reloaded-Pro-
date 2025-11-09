@@ -153,15 +153,39 @@ end
 function AzerothPilot:OnPlayerLogin()
     -- Initialize all modules
     AzerothPilot.Data.Routes:Initialize()
+    AzerothPilot.Data.Legion:Initialize()
+    AzerothPilot.Data.Professions:Initialize()
+    
+    -- Initialize advanced guides
+    local AdvancedGuides = AzerothPilot.Data.AdvancedGuides or {}
+    if AdvancedGuides.Achievements then AdvancedGuides.Achievements:Initialize() end
+    if AdvancedGuides.GoldMaking then AdvancedGuides.GoldMaking:Initialize() end
+    if AdvancedGuides.PetBattles then AdvancedGuides.PetBattles:Initialize() end
+    if AdvancedGuides.Mounts then AdvancedGuides.Mounts:Initialize() end
+    
     AzerothPilot.Guides.Engine:Initialize()
     AzerothPilot.Guides.QuestTracker:Initialize()
     AzerothPilot.Guides.Waypoints:Initialize()
     AzerothPilot.UI.Arrow:Initialize()
     AzerothPilot.UI.Settings:Initialize()
     
+    -- Initialize PTR Integration
+    AzerothPilot.PTR:Initialize()
+    
+    -- Initialize STUNNING Modern UI
+    AzerothPilot.UI.Modern:Initialize()
+    
     -- Show welcome message
-    self:Print("Welcome! Type |cFFFFFF00/ap|r for commands")
-    self:Print("|cFF00FF00The superior leveling addon - updated for 2025!|r")
+    self:Print("╔════════════════════════════════════════════╗")
+    self:Print("║  |cFF00D4FFAzeroth Pilot|r |cFFFFD700Reloaded Pro|r  ║")
+    self:Print("╚════════════════════════════════════════════╝")
+    self:Print(" ")
+    self:Print("|cFF00FF00✓|r STUNNING Modern UI - Better than Zygor!")
+    self:Print("|cFF00FF00✓|r ALL Professions, Achievements, Gold Guides!")
+    self:Print("|cFF00FF00✓|r PTR Integration - Always ahead!")
+    self:Print("|cFF00FF00✓|r 100% FREE - Save $120/year!")
+    self:Print(" ")
+    self:Print("Type |cFFFFD700/ap|r for commands  |  Click minimap button to start!")
     
     -- Resume guide if active
     if AzerothPilotCharDB.currentGuide then
@@ -170,7 +194,7 @@ function AzerothPilot:OnPlayerLogin()
             AzerothPilot.Guides.Engine.activeGuide = guide
             AzerothPilot.Guides.Engine.currentStepIndex = AzerothPilotCharDB.currentStep or 1
             AzerothPilot.Guides.Engine:UpdateCurrentStep()
-            self:Print("Resumed guide: " .. guide.name)
+            self:Print("Resumed guide: |cFF00D4FF" .. guide.name .. "|r")
         end
     end
 end

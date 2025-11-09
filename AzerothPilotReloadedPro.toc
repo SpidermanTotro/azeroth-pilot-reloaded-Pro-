@@ -1,7 +1,7 @@
 ## Interface: 110002
-## Title: Azeroth Pilot Reloaded Pro
-## Notes: The ultimate leveling guide addon for World of Warcraft - ahead of the game for 2025!
-## Author: Azeroth Pilot Team
+## Title: |cFF00D4FFAzeroth Pilot|r |cFFFFD700Reloaded Pro|r
+## Notes: STUNNING UI! PTR-Integrated! All Professions! Achievements! Gold Guides! Better than Zygor - 100% FREE!
+## Author: Azeroth Pilot Pro Team
 ## Version: 1.0.0
 ## SavedVariables: AzerothPilotDB
 ## SavedVariablesPerCharacter: AzerothPilotCharDB
@@ -9,26 +9,33 @@
 ## X-Website: https://github.com/SpidermanTotro/azeroth-pilot-reloaded-Pro-
 ## X-Curse-Project-ID: azeroth-pilot-reloaded-pro
 ## X-WoWI-ID: azeroth-pilot-reloaded-pro
+## X-Features: Stunning Modern UI, PTR Integration, Auto-Learning, Legion Remix, Complete Coverage, Professions, Achievements, Gold Making, Pet Battles, Mount Farming
 
 # Core Files
 Core\Init.lua
 Core\Database.lua
 Core\Utils.lua
+Core\PTRIntegration.lua
 
-# UI Files
+# UI Files - STUNNING Modern Interface!
 UI\MainFrame.xml
+UI\MainFrame.lua
 UI\SettingsPanel.lua
 UI\Arrow.lua
+UI\ModernUI.lua
 
 # Guide System
 Guides\GuideEngine.lua
 Guides\QuestTracker.lua
 Guides\Waypoints.lua
 
-# Data
+# Data - COMPLETE Coverage!
 Data\Zones.lua
 Data\Quests.lua
 Data\Routes.lua
+Data\LegionRoutes.lua
+Data\ProfessionGuides.lua
+Data\AdvancedGuides.lua
 
 # Main
 Main.lua
