@@ -6,6 +6,8 @@ return {
     globals = {
     -- Add addon/core globals
     "AzerothPilot", "QuestMasterPro", "AzerothPilotDB", "AzerothPilotCharDB", "QuestMasterProDB", "QuestMasterProCharDB",
+    -- Sample / exercise SavedVariables used by the learning templates
+    "SampleAddonDB", "SampleAddonCharDB",
 
         -- WoW UI / API
         "CreateFrame", "UIParent", "WorldMapFrame", "Minimap", "GameTooltip", "TomTom",
