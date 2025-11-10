@@ -2,6 +2,36 @@ name: Lint (luacheck)
 
 on:
   push:
+    branches: [ clean/start-over ]
+  pull_request:
+    branches: [ main ]
+
+jobs:
+  luacheck:
+    name: Luacheck
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Install Lua and LuaRocks
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y lua5.1 luarocks
+
+      - name: Install luacheck
+        run: |
+          luarocks --local install luacheck 1.2.0 || luarocks install luacheck
+
+      - name: Run luacheck
+        continue-on-error: true
+        run: |
+          export PATH="$HOME/.luarocks/bin:$PATH"
+          luacheck . --config .luacheckrc || true
+name: Lint (luacheck)
+
+on:
+  push:
     branches: [ main ]
   pull_request:
     branches: [ main ]

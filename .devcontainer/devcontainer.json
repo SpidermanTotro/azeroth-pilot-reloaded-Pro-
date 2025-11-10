@@ -1,4 +1,20 @@
 {
+  "name": "QuestMaster Pro: Lua devcontainer",
+  "build": {
+    "dockerfile": "Dockerfile"
+  },
+  "customizations": {
+    "vscode": {
+      "extensions": [
+        "sumneko.lua"
+      ]
+    }
+  },
+  "forwardPorts": [],
+  "postCreateCommand": "luarocks --local install luacheck 1.2.0 || true",
+  "remoteUser": "vscode"
+}
+{
   "name": "AzerothPilot: Lua devcontainer",
   "build": { "dockerfile": "Dockerfile" },
   "customizations": {

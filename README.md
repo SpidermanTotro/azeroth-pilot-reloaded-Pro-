@@ -1,5 +1,35 @@
 # QuestMaster Pro
 
+QuestMaster Pro — a clean, minimal rewrite scaffold for a World of Warcraft leveling addon.
+
+This branch (clean/start-over) contains a small, well-documented starting point so the project can be rebuilt safely.
+
+Included:
+- `QuestMasterPro.toc` — addon metadata
+- `Main.lua` — minimal loader and slash command
+- `Core/Init.lua`, `Core/Utils.lua` — core scaffolding
+- `UI/MainFrame.lua` — minimal UI frame
+- `LICENSE` — GPL-3.0 license preserved from original repo
+
+Getting started (development):
+
+1. Open this repository in VS Code or Codespaces.
+2. Use the provided devcontainer to get Lua 5.1 and luacheck available.
+3. Run luacheck to lint the code (CI also runs luacheck):
+
+```bash
+# ensure luarocks local bin is on PATH (if you installed locally)
+export PATH="$HOME/.luarocks/bin:$PATH"
+luacheck . --config .luacheckrc
+```
+
+Contributing:
+- Work on branches. The `clean/start-over` branch is a safe place to iterate.
+- Keep changes behavior-preserving for any users depending on SavedVariables.
+
+If you want me to port existing guides or add features next, tell me and I'll proceed on this branch.
+# QuestMaster Pro
+
 **The ULTIMATE FREE Leveling Guide for World of Warcraft - Built for 2025 and Beyond!**
 
 [![License](https://img.shields.io/badge/License-GPL%20v3-blue.svg)](LICENSE)
