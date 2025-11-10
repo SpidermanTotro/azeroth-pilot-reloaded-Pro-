@@ -204,7 +204,7 @@ Profs.AlchemyGuide = {
     author = "APR Pro Team",
     version = "1.0.0",
     lastUpdated = "2025-11-09",
-    
+
     phases = {
         {
             name = "Apprentice (1-75)",
@@ -287,13 +287,13 @@ Profs.AlchemyGuide = {
             tips = "Suramar best for Starlight Rose - worth the effort!"
         }
     },
-    
+
     moneyMakingTips = {
         "Craft and sell Flask of the Countless Armies - HIGH profit!",
         "Transmute Living Steel daily - 1000g profit easy",
         "Ancient Rejuvenation Potions always in demand for mythic+"
     },
-    
+
     totalMaterials = {
         gold = "~5,000g total (much less if you farm)",
         time = "3-4 hours if you have mats ready",
@@ -312,7 +312,7 @@ Profs.BlacksmithingGuide = {
     goldCost = 8000,
     timeCost = "4-5 hours",
     author = "APR Pro Team",
-    
+
     phases = {
         {
             name = "Apprentice (1-75)",
@@ -331,7 +331,7 @@ Profs.BlacksmithingGuide = {
         }
         -- Additional phases follow same pattern through Legion
     },
-    
+
     specializations = {
         {
             name = "Armorsmith",
@@ -358,7 +358,7 @@ Profs.EngineeringGuide = {
     maxSkill = 800,
     goldCost = 12000, -- Most expensive but worth it!
     timeCost = "5-6 hours",
-    
+
     funFeatures = {
         "Wormhole Generators - Teleport across continents!",
         "MOLL-E - Your own portable mailbox!",
@@ -367,7 +367,7 @@ Profs.EngineeringGuide = {
         "Blingtron - Daily gifts for you and friends!",
         "Failure Detection Pylon - Instant repair anywhere!"
     },
-    
+
     phases = {
         -- Similar structure to above professions
     }
@@ -396,7 +396,7 @@ function Profs:Initialize()
     AzerothPilot.Database:RegisterGuide(self.AlchemyGuide)
     AzerothPilot.Database:RegisterGuide(self.BlacksmithingGuide)
     AzerothPilot.Database:RegisterGuide(self.EngineeringGuide)
-    
+
     AzerothPilot:Print("Profession guides loaded - BETTER than Zygor, 100% FREE!")
     AzerothPilot:Print("Save $120/year - Get the same quality for $0!")
 end

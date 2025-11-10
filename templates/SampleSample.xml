@@ -1,0 +1,21 @@
+<Ui xmlns="http://www.blizzard.com/wow/ui/">
+  <Script file="SampleSample.lua"/>
+  <Frame name="SampleFrame" hidden="false" enableMouse="true">
+    <Size>
+      <AbsDimension x="200" y="60"/>
+    </Size>
+    <Anchors>
+      <Anchor point="CENTER"/>
+    </Anchors>
+    <Layers>
+      <Layer level="ARTWORK">
+        <FontString name="$parentLabel" inherits="GameFontNormal">
+          <Anchors>
+            <Anchor point="CENTER"/>
+          </Anchors>
+          <Text>Hello, Sample</Text>
+        </FontString>
+      </Layer>
+    </Layers>
+  </Frame>
+</Ui>

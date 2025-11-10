@@ -101,8 +101,8 @@ Routes are the heart of a leveling addon! Here's how to contribute:
 **Setting Up:**
 ```bash
 # Fork the repository
-git clone https://github.com/YOUR-USERNAME/azeroth-pilot-reloaded-Pro-.git
-cd azeroth-pilot-reloaded-Pro-
+git clone https://github.com/YOUR-USERNAME/QuestMaster-Pro.git
+cd QuestMaster-Pro
 
 # Create a branch
 git checkout -b feature/amazing-feature

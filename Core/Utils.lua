@@ -17,12 +17,12 @@ function Utils:GetPlayerPosition()
     if not mapID then
         return nil, nil, nil
     end
-    
+
     local position = C_Map.GetPlayerMapPosition(mapID, "player")
     if not position then
         return nil, nil, nil
     end
-    
+
     return position:GetXY(), mapID
 end
 
@@ -40,7 +40,7 @@ function Utils:GetDistanceToWaypoint(waypointX, waypointY)
     if not playerX or not waypointX then
         return nil
     end
-    
+
     return self:GetDistance(playerX, playerY, waypointX, waypointY)
 end
 
@@ -50,7 +50,7 @@ function Utils:IsInRange(waypointX, waypointY, range)
     if not distance then
         return false
     end
-    
+
     return distance <= (range or 0.02) -- Default ~20 yards in map coordinates
 end
 
@@ -59,7 +59,7 @@ function Utils:GetQuestInfo(questID)
     if not questID then
         return nil
     end
-    
+
     local questInfo = C_QuestLog.GetInfo(C_QuestLog.GetLogIndexForQuestID(questID))
     return questInfo
 end
@@ -69,7 +69,7 @@ function Utils:IsQuestComplete(questID)
     if not questID then
         return false
     end
-    
+
     return C_QuestLog.IsComplete(questID)
 end
 
@@ -78,7 +78,7 @@ function Utils:IsQuestInLog(questID)
     if not questID then
         return false
     end
-    
+
     return C_QuestLog.GetLogIndexForQuestID(questID) ~= nil
 end
 

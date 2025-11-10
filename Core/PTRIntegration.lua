@@ -13,13 +13,13 @@ PTR.buildVersion = select(4, GetBuildInfo())
 
 -- Initialize PTR detection
 function PTR:Initialize()
-    local version, build, date, tocversion = GetBuildInfo()
-    
+    local _, build, _, tocversion = GetBuildInfo()
+
     -- Detect PTR/Beta realms
     local realmName = GetRealmName()
     if realmName and (
-        realmName:find("PTR") or 
-        realmName:find("Test") or 
+        realmName:find("PTR") or
+        realmName:find("Test") or
         realmName:find("Beta")
     ) then
         self.isPTR = true
@@ -27,13 +27,13 @@ function PTR:Initialize()
         AzerothPilot:Print("|cFFFF8800PTR/Beta realm detected!|r")
         AzerothPilot:Print("|cFF00FF00Auto-learning new quests enabled!|r")
     end
-    
+
     -- Check TOC version for beta/PTR
     if tocversion > 110200 then
         self.isBeta = true
         AzerothPilot:Print("|cFFFF8800Beta client detected - Learning future content!|r")
     end
-    
+
     self:RegisterEventHandlers()
     AzerothPilot:DebugPrint("PTR Integration initialized - Build: " .. build)
 end
@@ -47,12 +47,12 @@ function PTR:LearnQuest(questID)
     if not questID or self.discoveredQuests[questID] then
         return
     end
-    
+
     local questData = self:GatherQuestData(questID)
     if questData then
         self.discoveredQuests[questID] = true
         self.newQuestData[questID] = questData
-        
+
         if self.isPTR or self.isBeta then
             AzerothPilot:Print("|cFF00FF00NEW QUEST DISCOVERED:|r " .. (questData.title or "Quest " .. questID))
             AzerothPilot:DebugPrint("Quest data captured for future integration")
@@ -68,10 +68,10 @@ function PTR:GatherQuestData(questID)
         build = self.buildVersion,
         source = "PTR Auto-Learn"
     }
-    
+
     -- Get quest title
     questData.title = C_QuestLog.GetTitleForQuestID(questID)
-    
+
     -- Get quest info if in log
     local questLogIndex = C_QuestLog.GetLogIndexForQuestID(questID)
     if questLogIndex then
@@ -83,22 +83,22 @@ function PTR:GatherQuestData(questID)
             questData.isWeekly = info.frequency == 2
         end
     end
-    
+
     -- Get quest giver location
     local x, y = C_QuestLog.GetNextWaypointForMap(questID, C_Map.GetBestMapForUnit("player"))
     if x and y then
         questData.waypoint = { x = x, y = y }
     end
-    
+
     -- Get current zone
     questData.zone = C_Map.GetBestMapForUnit("player")
     questData.zoneName = C_Map.GetMapInfo(questData.zone)
-    
+
     -- Get quest objectives
     local objectives = C_QuestLog.GetQuestObjectives(questID)
     if objectives then
         questData.objectives = {}
-        for i, obj in ipairs(objectives) do
+        for _, obj in ipairs(objectives) do
             table.insert(questData.objectives, {
                 text = obj.text,
                 type = obj.type,
@@ -106,7 +106,7 @@ function PTR:GatherQuestData(questID)
             })
         end
     end
-    
+
     return questData
 end
 
@@ -116,12 +116,12 @@ function PTR:RegisterEventHandlers()
     AzerothPilot.EventFrame:RegisterEvent("QUEST_LOG_UPDATE")
     AzerothPilot.EventFrame:RegisterEvent("QUEST_DETAIL")
     AzerothPilot.EventFrame:RegisterEvent("QUEST_COMPLETE")
-    
+
     -- Hook into existing event handler
     local originalHandler = AzerothPilot.EventFrame:GetScript("OnEvent")
-    AzerothPilot.EventFrame:SetScript("OnEvent", function(self, event, ...)
+    AzerothPilot.EventFrame:SetScript("OnEvent", function(frame, event, ...)
         if originalHandler then
-            originalHandler(self, event, ...)
+            originalHandler(frame, event, ...)
         end
         PTR:OnEvent(event, ...)
     end)
@@ -148,23 +148,23 @@ function PTR:ExportDiscoveredQuests()
         questCount = 0,
         quests = {}
     }
-    
-    for questID, questData in pairs(self.newQuestData) do
+
+    for _, questData in pairs(self.newQuestData) do
         table.insert(export.quests, questData)
         export.questCount = export.questCount + 1
     end
-    
+
     -- Store in saved variables for later integration
     if not AzerothPilotDB.ptrData then
         AzerothPilotDB.ptrData = {}
     end
     AzerothPilotDB.ptrData[self.buildVersion] = export
-    
+
     AzerothPilot:Print(string.format(
         "|cFF00FF00Exported %d new quests from PTR/Beta!|r",
         export.questCount
     ))
-    
+
     return export
 end
 
@@ -180,12 +180,12 @@ function PTR:ImportFromTrustedSource(sourceData, sourceName)
     if not sourceData or not sourceName then
         return false
     end
-    
+
     if not self.trustedSources[sourceName] then
         AzerothPilot:Print("|cFFFF0000Warning: Untrusted source:|r " .. sourceName)
         return false
     end
-    
+
     local imported = 0
     for _, questData in ipairs(sourceData.quests or {}) do
         if questData.id and questData.verified then
@@ -196,12 +196,12 @@ function PTR:ImportFromTrustedSource(sourceData, sourceName)
             end
         end
     end
-    
+
     AzerothPilot:Print(string.format(
         "|cFF00FF00Imported %d quests from trusted source: %s|r",
         imported, sourceName
     ))
-    
+
     return true
 end
 
@@ -215,17 +215,17 @@ PTR.updateChecks = {
 
 function PTR:CheckForUpdates()
     local currentTime = time()
-    
+
     -- Don't check too frequently
     if currentTime - self.updateChecks.lastCheck < self.updateChecks.checkInterval then
         return
     end
-    
+
     self.updateChecks.lastCheck = currentTime
-    
+
     -- In a real implementation, this would check GitHub releases or a web API
     AzerothPilot:DebugPrint("Checking for updates...")
-    
+
     -- Simulate update check (would be actual API call)
     -- self:FetchLatestVersion()
 end
@@ -243,9 +243,9 @@ function PTR:AbsorbCurrentContent()
     if not self.ContentAbsorption.enabled then
         return
     end
-    
+
     AzerothPilot:Print("|cFF00FF00Absorbing current content data...|r")
-    
+
     -- Learn current zone
     if self.ContentAbsorption.learnNewZones then
         local mapID = C_Map.GetBestMapForUnit("player")
@@ -257,7 +257,7 @@ function PTR:AbsorbCurrentContent()
             end
         end
     end
-    
+
     -- Learn active quests
     if self.ContentAbsorption.learnNewQuests then
         local questLog = C_QuestLog.GetAllCompletedQuestIDs()
@@ -282,11 +282,11 @@ function PTR:GenerateRouteFromData(zoneName, minLevel, maxLevel)
         source = "PTR Auto-Learn",
         steps = {}
     }
-    
+
     -- Find all quests in level range for this zone
     for questID, questData in pairs(self.newQuestData) do
-        if questData.level and 
-           questData.level >= minLevel and 
+        if questData.level and
+           questData.level >= minLevel and
            questData.level <= maxLevel then
             table.insert(route.steps, {
                 title = questData.title or ("Quest " .. questID),
@@ -298,14 +298,14 @@ function PTR:GenerateRouteFromData(zoneName, minLevel, maxLevel)
             })
         end
     end
-    
+
     -- Sort steps by level
     table.sort(route.steps, function(a, b)
         local aLevel = self.newQuestData[a.questID] and self.newQuestData[a.questID].level or 0
         local bLevel = self.newQuestData[b.questID] and self.newQuestData[b.questID].level or 0
         return aLevel < bLevel
     end)
-    
+
     if #route.steps > 0 then
         AzerothPilot:Print(string.format(
             "|cFF00FF00Auto-generated route with %d steps!|r",
@@ -313,7 +313,7 @@ function PTR:GenerateRouteFromData(zoneName, minLevel, maxLevel)
         ))
         return route
     end
-    
+
     return nil
 end
 
@@ -328,19 +328,19 @@ function PTR:SubmitCommunityRoute(route)
     if not route or not route.id then
         return false
     end
-    
+
     -- Mark as community contribution
     route.communitySubmitted = true
     route.submittedBy = UnitName("player")
     route.submittedRealm = GetRealmName()
     route.submittedDate = date("%Y-%m-%d")
-    
+
     -- Store locally
     table.insert(self.CommunityData.contributions, route)
-    
+
     AzerothPilot:Print("|cFF00FF00Route submitted for community review!|r")
     AzerothPilot:Print("Thank you for contributing to APR Pro!")
-    
+
     return true
 end
 
@@ -355,7 +355,7 @@ function PTR:SyncQuestData()
     if not self.QuestSync.enabled or not IsInGroup() then
         return
     end
-    
+
     -- Sync discovered quest data with party members using APR Pro
     -- This allows shared learning of new content
     AzerothPilot:DebugPrint("Syncing quest data with party...")
@@ -365,7 +365,7 @@ end
 SLASH_APRPTR1 = "/aprptr"
 SlashCmdList["APRPTR"] = function(msg)
     local command = msg:lower()
-    
+
     if command == "export" then
         PTR:ExportDiscoveredQuests()
     elseif command == "absorb" then
@@ -411,7 +411,7 @@ function PTR:NotifyUpdate(message, type)
     elseif type == "ptr_data" then
         color = "FF8800"
     end
-    
+
     AzerothPilot:Print("|cFF" .. color .. "[UPDATE] " .. message .. "|r")
 end
 

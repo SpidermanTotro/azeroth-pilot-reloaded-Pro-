@@ -80,7 +80,7 @@ Classes.AllClasses = {
             }
         }
     },
-    
+
     DemonHunter = {
         id = 2, name = "Demon Hunter", icon = 1260827,
         armor = "Leather", resource = "Fury", roles = {"Tank", "Melee DPS"},
@@ -119,7 +119,7 @@ Classes.AllClasses = {
             }
         }
     },
-    
+
     Druid = {
         id = 3, name = "Druid", icon = 625999,
         armor = "Leather", resource = "Varies by form", roles = {"Tank", "Healer", "Melee DPS", "Ranged DPS"},
@@ -170,7 +170,7 @@ Classes.AllClasses = {
             }
         }
     },
-    
+
     Evoker = {
         id = 4, name = "Evoker", icon = 4574311,
         armor = "Mail", resource = "Essence", roles = {"Healer", "Ranged DPS"},
@@ -208,7 +208,7 @@ Classes.AllClasses = {
             }
         }
     },
-    
+
     Hunter = {
         id = 5, name = "Hunter", icon = 626000,
         armor = "Mail", resource = "Focus", roles = {"Melee DPS", "Ranged DPS"},
@@ -252,7 +252,7 @@ Classes.AllClasses = {
             }
         }
     },
-    
+
     Mage = {
         id = 6, name = "Mage", icon = 626001,
         armor = "Cloth", resource = "Mana", roles = {"Ranged DPS"},
@@ -292,7 +292,7 @@ Classes.AllClasses = {
             }
         }
     },
-    
+
     Monk = {
         id = 7, name = "Monk", icon = 626002,
         armor = "Leather", resource = "Energy/Chi", roles = {"Tank", "Healer", "Melee DPS"},
@@ -328,7 +328,7 @@ Classes.AllClasses = {
             }
         }
     },
-    
+
     Paladin = {
         id = 8, name = "Paladin", icon = 626003,
         armor = "Plate", resource = "Holy Power", roles = {"Tank", "Healer", "Melee DPS"},
@@ -366,7 +366,7 @@ Classes.AllClasses = {
             }
         }
     },
-    
+
     Priest = {
         id = 9, name = "Priest", icon = 626004,
         armor = "Cloth", resource = "Mana", roles = {"Healer", "Ranged DPS"},
@@ -404,7 +404,7 @@ Classes.AllClasses = {
             }
         }
     },
-    
+
     Rogue = {
         id = 10, name = "Rogue", icon = 626005,
         armor = "Leather", resource = "Energy", roles = {"Melee DPS"},
@@ -444,7 +444,7 @@ Classes.AllClasses = {
             }
         }
     },
-    
+
     Shaman = {
         id = 11, name = "Shaman", icon = 626006,
         armor = "Mail", resource = "Mana", roles = {"Healer", "Melee DPS", "Ranged DPS"},
@@ -483,7 +483,7 @@ Classes.AllClasses = {
             }
         }
     },
-    
+
     Warlock = {
         id = 12, name = "Warlock", icon = 626007,
         armor = "Cloth", resource = "Mana + Soul Shards", roles = {"Ranged DPS"},
@@ -529,7 +529,7 @@ Classes.AllClasses = {
             }
         }
     },
-    
+
     Warrior = {
         id = 13, name = "Warrior", icon = 626008,
         armor = "Plate", resource = "Rage", roles = {"Tank", "Melee DPS"},

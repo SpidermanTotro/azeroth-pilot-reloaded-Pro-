@@ -10,17 +10,17 @@ function MainFrame:OnLoad()
     AzerothPilotMainFrame:SetMovable(true)
     AzerothPilotMainFrame:EnableMouse(true)
     AzerothPilotMainFrame:RegisterForDrag("LeftButton")
-    
+
     -- Set title
     AzerothPilotMainFrameTitle:SetText("Azeroth Pilot Pro")
-    
+
     -- Set button texts
     AzerothPilotMainFrameNextButton:SetText("Next >>")
     AzerothPilotMainFramePrevButton:SetText("<< Prev")
-    
+
     -- Initial update
     self:UpdateStep(nil)
-    
+
     AzerothPilot:DebugPrint("Main frame loaded")
 end
 
@@ -31,27 +31,27 @@ function MainFrame:UpdateStep(step)
         AzerothPilotMainFrameCoordText:SetText("")
         return
     end
-    
+
     -- Build step text
     local text = ""
-    
+
     -- Add step number
     if AzerothPilot.Guides.Engine.activeGuide then
         local current = AzerothPilot.Guides.Engine.currentStepIndex
         local total = #AzerothPilot.Guides.Engine.activeGuide.steps
         text = text .. "|cFFFFD700Step " .. current .. " of " .. total .. "|r\n\n"
     end
-    
+
     -- Add step title
     if step.title then
         text = text .. "|cFF00FF00" .. step.title .. "|r\n\n"
     end
-    
+
     -- Add description
     if step.description then
         text = text .. step.description .. "\n\n"
     end
-    
+
     -- Add quest info
     if step.questID then
         local questName = C_QuestLog.GetTitleForQuestID(step.questID)
@@ -59,7 +59,7 @@ function MainFrame:UpdateStep(step)
             text = text .. "|cFFFFFF00Quest:|r " .. questName .. "\n"
         end
     end
-    
+
     -- Add objective type
     if step.action == "accept" then
         text = text .. "|cFF88FF88Action:|r Accept quest\n"
@@ -70,9 +70,9 @@ function MainFrame:UpdateStep(step)
     elseif step.action == "grind" then
         text = text .. "|cFF88FF88Action:|r Grind to level " .. (step.level or "?") .. "\n"
     end
-    
+
     AzerothPilotMainFrameStepText:SetText(text)
-    
+
     -- Update coordinates
     if step.waypoint then
         local coords = AzerothPilot.Utils:FormatCoords(step.waypoint.x, step.waypoint.y)
