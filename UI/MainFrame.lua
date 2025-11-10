@@ -1,3 +1,29 @@
+-- UI/MainFrame.lua - Minimal main frame for QuestMaster Pro scaffold
+
+QuestMasterPro.UI = QuestMasterPro.UI or {}
+QuestMasterPro.UI.MainFrame = QuestMasterPro.UI.MainFrame or {}
+local MainFrame = QuestMasterPro.UI.MainFrame
+
+function MainFrame:Init()
+    if self.frame then return end
+    local f = CreateFrame("Frame", "QuestMasterPro_MainFrame", UIParent)
+    f:SetSize(400, 300)
+    f:SetPoint("CENTER")
+    f:Hide()
+
+    f.title = f:CreateFontString(nil, "OVERLAY", "GameFontNormalLarge")
+    f.title:SetPoint("TOP", 0, -10)
+    f.title:SetText("QuestMaster Pro")
+
+    self.frame = f
+end
+
+function MainFrame:Toggle()
+    if not self.frame then self:Init() end
+    if self.frame:IsShown() then self.frame:Hide() else self.frame:Show() end
+end
+
+return MainFrame
 -- Azeroth Pilot Reloaded Pro - Main Frame UI Logic
 -- Modern UI that surpasses AAP and competitors
 

@@ -1,3 +1,15 @@
+## Interface: 110002
+## Title: QuestMaster Pro
+## Notes: A clean, minimal rewrite scaffold for QuestMaster Pro
+## Author: QuestMaster Pro Team
+## Version: 0.1.0
+## SavedVariables: QuestMasterProDB
+## SavedVariablesPerCharacter: QuestMasterProCharDB
+
+Core/Init.lua
+Core/Utils.lua
+UI/MainFrame.lua
+Main.lua
 ## Interface: 110002, 110005, 110007, 110200, 110205, 110207, 40400, 11502, 11503
 ## Title: |cFF00D4FFQuest|r|cFFFFD700Master Pro|r
 ## Notes: STUNNING UI! PTR-Integrated! All Professions! Achievements! Gold! M+! Better than Zygor - 100% FREE!

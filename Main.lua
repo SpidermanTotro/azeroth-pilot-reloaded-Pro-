@@ -1,3 +1,38 @@
+-- QuestMaster Pro - Minimal addon loader (rewrite/from-scratch)
+
+-- Global namespace
+QuestMasterPro = QuestMasterPro or {}
+local QMP = QuestMasterPro
+
+-- SavedVariables compatibility shim
+QuestMasterProDB = QuestMasterProDB or {}
+QuestMasterProCharDB = QuestMasterProCharDB or {}
+
+-- Simple loader for core modules
+local function safeRequire(path)
+    local ok, mod = pcall(require, path)
+    if not ok then
+        -- Fallback: try loading file as chunk (for WoW environment we use simple include pattern)
+        -- In this scaffold we keep modules as plain files under Core/ and UI/
+        return nil
+    end
+    return mod
+end
+
+-- Try to initialize Core/Init if present
+if QMP.Core and QMP.Core.Init and type(QMP.Core.Init.Init) == "function" then
+    QMP.Core.Init:Init()
+end
+
+-- Simple slash command to open settings
+SLASH_QMP1 = "/qmp"
+SlashCmdList["QMP"] = function(msg)
+    if QMP.UI and QMP.UI.MainFrame and QMP.UI.MainFrame.Toggle then
+        QMP.UI.MainFrame:Toggle()
+    else
+        print("[QuestMaster Pro] Addon loaded. No UI available in scaffold yet.")
+    end
+end
 -- Azeroth Pilot Reloaded Pro - Main Entry Point
 -- The superior alternative to AAP, Zygor, RestedXP, and Dugi Guides!
 

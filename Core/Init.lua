@@ -1,3 +1,29 @@
+-- Core/Init.lua - Minimal initialization for QuestMaster Pro (rewrite)
+
+QuestMasterPro.Core = QuestMasterPro.Core or {}
+local Core = QuestMasterPro.Core
+
+function Core:Init()
+    -- Basic event frame
+    local frame = CreateFrame("Frame", "QMP_CoreFrame")
+    frame:RegisterEvent("PLAYER_LOGIN")
+    frame:SetScript("OnEvent", function(self, event, ...)
+        if event == "PLAYER_LOGIN" then
+            -- Restore saved vars
+            QuestMasterProDB = QuestMasterProDB or {}
+            QuestMasterProCharDB = QuestMasterProCharDB or {}
+            if QuestMasterProDB.debug then
+                print("[QuestMaster Pro] Debug enabled")
+            end
+            -- Initialize UI if available
+            if QuestMasterPro.UI and QuestMasterPro.UI.MainFrame and QuestMasterPro.UI.MainFrame.Init then
+                QuestMasterPro.UI.MainFrame:Init()
+            end
+        end
+    end)
+end
+
+return Core
 -- Azeroth Pilot Reloaded Pro - Core Initialization
 -- Version: 1.0.0
 
