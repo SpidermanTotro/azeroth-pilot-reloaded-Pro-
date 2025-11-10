@@ -1,3 +1,31 @@
+name: luacheck
+
+on:
+  push:
+    branches: [ main, clean/start-over, rewrite/from-scratch ]
+  pull_request:
+    branches: [ main ]
+
+jobs:
+  luacheck:
+    name: Run luacheck
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Install Lua & luarocks
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y lua5.1 luarocks
+
+      - name: Install luacheck
+        run: |
+          sudo luarocks install luacheck
+
+      - name: Run luacheck
+        run: |
+          luacheck --no-color . --config .luacheckrc
 name: Lint (luacheck)
 
 on:
