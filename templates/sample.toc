@@ -1,6 +1,0 @@
-## Interface: 90005
-## Title: Azeroth Pilot Sample
-## Notes: Sample TOC
-## SavedVariables: SampleAddonDB
-SampleSample.xml
-SampleSample.lua
