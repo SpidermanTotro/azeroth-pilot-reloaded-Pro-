@@ -1,17 +1,16 @@
 {
   "name": "QuestMaster Pro: Lua devcontainer",
-  "build": {
-    "dockerfile": "Dockerfile"
-  },
+  "image": "mcr.microsoft.com/devcontainers/base:ubuntu",
   "customizations": {
     "vscode": {
       "extensions": [
-        "sumneko.lua"
+        "sumneko.lua",
+        "ms-vscode.cpptools"
       ]
     }
   },
-  "forwardPorts": [],
-  "postCreateCommand": "luarocks --local install luacheck 1.2.0 || true",
+  "features": {},
+  "postCreateCommand": "sudo apt-get update && sudo apt-get install -y lua5.1 luarocks && export PATH=\"$HOME/.luarocks/bin:$PATH\" && luarocks --local install luacheck 1.2.0 || luarocks install luacheck",
   "remoteUser": "vscode"
 }
 {
