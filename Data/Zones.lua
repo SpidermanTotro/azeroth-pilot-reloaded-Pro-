@@ -12,13 +12,13 @@ Zones.Classic = {
     [1429] = { id = 1429, name = "Elwynn Forest", faction = "Alliance", level = "1-10", continent = "Eastern Kingdoms" },
     [1950] = { id = 1950, name = "Teldrassil", faction = "Alliance", level = "1-10", continent = "Kalimdor" },
     [1943] = { id = 1943, name = "Azuremyst Isle", faction = "Alliance", level = "1-10", continent = "Kalimdor" },
-    
+
     -- Horde Starting Zones
     [1411] = { id = 1411, name = "Durotar", faction = "Horde", level = "1-10", continent = "Kalimdor" },
     [1412] = { id = 1412, name = "Mulgore", faction = "Horde", level = "1-10", continent = "Kalimdor" },
     [1420] = { id = 1420, name = "Tirisfal Glades", faction = "Horde", level = "1-10", continent = "Eastern Kingdoms" },
     [1941] = { id = 1941, name = "Eversong Woods", faction = "Horde", level = "1-10", continent = "Eastern Kingdoms" },
-    
+
     -- Mid-level Zones
     [1436] = { id = 1436, name = "Westfall", faction = "Alliance", level = "10-20", continent = "Eastern Kingdoms" },
     [1413] = { id = 1413, name = "The Barrens", faction = "Horde", level = "10-25", continent = "Kalimdor" },
@@ -63,13 +63,13 @@ Zones.Cataclysm = {
 -- Mists of Pandaria Zones (FRESH CONTENT - 2025!)
 Zones.Pandaria = {
     [1504] = { id = 1504, name = "The Jade Forest", level = "80-85", continent = "Pandaria", expansion = "Mists of Pandaria" },
-    [1530] = { id = 1530, name = "Valley of the Four Winds", level = "85-86", continent = "Pandaria", expansion = "Mists of Pandaria" },
+    [1536] = { id = 1536, name = "Valley of the Four Winds", level = "85-86", continent = "Pandaria", expansion = "Mists of Pandaria" },
     [1524] = { id = 1524, name = "Krasarang Wilds", level = "85-86", continent = "Pandaria", expansion = "Mists of Pandaria" },
     [1533] = { id = 1533, name = "Kun-Lai Summit", level = "87-88", continent = "Pandaria", expansion = "Mists of Pandaria" },
     [1534] = { id = 1534, name = "Townlong Steppes", level = "88-89", continent = "Pandaria", expansion = "Mists of Pandaria" },
     [1535] = { id = 1535, name = "Dread Wastes", level = "89-90", continent = "Pandaria", expansion = "Mists of Pandaria" },
     [1554] = { id = 1554, name = "Timeless Isle", level = "90", continent = "Pandaria", expansion = "Mists of Pandaria" },
-    [1530] = { id = 1530, name = "Vale of Eternal Blossoms", level = "90", continent = "Pandaria", expansion = "Mists of Pandaria" },
+    [1537] = { id = 1537, name = "Vale of Eternal Blossoms", level = "90", continent = "Pandaria", expansion = "Mists of Pandaria" },
 }
 
 -- Get zone info by ID

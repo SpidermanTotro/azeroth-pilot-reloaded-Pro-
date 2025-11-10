@@ -25,12 +25,12 @@ QuestSkip.questRatings = {
 function QuestSkip:ShouldSkipQuest(questID, questLevel)
     local playerLevel = UnitLevel("player")
     local levelDiff = playerLevel - questLevel
-    
+
     -- Skip if too low level
     if self.config.autoSkipOverleveled and levelDiff >= self.config.skipThreshold then
         return true, string.format("Quest is %d levels below you (grey quest, minimal XP)", levelDiff)
     end
-    
+
     -- Check if quest is known to be inefficient
     if self.questRatings[questID] then
         local rating = self.questRatings[questID]
@@ -38,29 +38,29 @@ function QuestSkip:ShouldSkipQuest(questID, questLevel)
             return true, rating.skipReason or "Quest marked as inefficient"
         end
     end
-    
+
     return false, nil
 end
 
 -- Analyze quest objectives for grindiness
 function QuestSkip:IsQuestGrindy(questID)
     if not self.config.skipGrindy then return false end
-    
+
     local objectives = C_QuestLog.GetQuestObjectives(questID)
     if not objectives then return false end
-    
+
     for _, obj in ipairs(objectives) do
         -- Check for high kill counts
         if obj.type == "monster" and obj.numRequired and obj.numRequired >= self.config.grindyThreshold then
             return true, string.format("Requires killing %d enemies (very grindy)", obj.numRequired)
         end
-        
+
         -- Check for collection quests with low drop rates
         if obj.type == "item" and obj.numRequired and obj.numRequired >= 20 then
             return true, string.format("Requires collecting %d items (potentially low drop rate)", obj.numRequired)
         end
     end
-    
+
     return false, nil
 end
 
@@ -70,13 +70,13 @@ function QuestSkip:EstimateQuestTime(questID)
     if self.questRatings[questID] and self.questRatings[questID].timeEstimate then
         return self.questRatings[questID].timeEstimate
     end
-    
+
     -- Make educated guess based on objectives
     local objectives = C_QuestLog.GetQuestObjectives(questID)
     if not objectives then return 5 end -- Default 5 minutes
-    
+
     local estimatedTime = 2 -- Base time
-    
+
     for _, obj in ipairs(objectives) do
         if obj.type == "monster" then
             -- ~1 minute per 5 kills
@@ -89,7 +89,7 @@ function QuestSkip:EstimateQuestTime(questID)
             estimatedTime = estimatedTime + (obj.numRequired or 1) * 0.5
         end
     end
-    
+
     return math.ceil(estimatedTime)
 end
 
@@ -97,19 +97,19 @@ end
 function QuestSkip:CalculateXPPerMinute(questID, questLevel)
     local questInfo = C_QuestLog.GetQuestInfo(questID)
     if not questInfo then return 0 end
-    
+
     -- Get quest XP reward
     local xpReward = GetQuestLogRewardXP(questID)
     if not xpReward or xpReward == 0 then
         xpReward = 1000 -- Default estimate
     end
-    
+
     -- Get time estimate
     local timeEstimate = self:EstimateQuestTime(questID)
-    
+
     -- Calculate XP/min
     local xpPerMin = xpReward / timeEstimate
-    
+
     return xpPerMin, xpReward, timeEstimate
 end
 
@@ -120,9 +120,9 @@ function QuestSkip:ShowSkipRecommendation(questID, questName, reason)
         questName or "Quest",
         reason
     )
-    
+
     print(message)
-    
+
     if QuestMasterPro.UI and QuestMasterPro.UI.ShowNotification then
         QuestMasterPro.UI.ShowNotification("Quest Skip Suggestion", message, 8)
     end
@@ -132,24 +132,24 @@ end
 function QuestSkip:AnalyzeQuest(questID)
     local questInfo = C_QuestLog.GetInfo(questID)
     if not questInfo then return end
-    
+
     local questName = questInfo.title
     local questLevel = questInfo.level or 1
-    
+
     -- Check if should skip
     local shouldSkip, skipReason = self:ShouldSkipQuest(questID, questLevel)
     if shouldSkip then
         self:ShowSkipRecommendation(questID, questName, skipReason)
         return
     end
-    
+
     -- Check if grindy
     local isGrindy, grindReason = self:IsQuestGrindy(questID)
     if isGrindy then
         self:ShowSkipRecommendation(questID, questName, grindReason)
         return
     end
-    
+
     -- Check time efficiency
     if self.config.warnOnLongQuests then
         local timeEstimate = self:EstimateQuestTime(questID)
@@ -170,7 +170,7 @@ end
 function QuestSkip:HookQuestAccept()
     local frame = CreateFrame("Frame")
     frame:RegisterEvent("QUEST_ACCEPTED")
-    frame:SetScript("OnEvent", function(self, event, questID)
+    frame:SetScript("OnEvent", function(_, event, questID)
         if event == "QUEST_ACCEPTED" then
             C_Timer.After(0.5, function()
                 QuestSkip:AnalyzeQuest(questID)
@@ -183,7 +183,7 @@ end
 function QuestSkip:AnalyzeCurrentQuests()
     local numQuests = C_QuestLog.GetNumQuestLogEntries()
     local analyzed = 0
-    
+
     for i = 1, numQuests do
         local info = C_QuestLog.GetInfo(i)
         if info and not info.isHeader and not info.isHidden then
@@ -194,7 +194,7 @@ function QuestSkip:AnalyzeCurrentQuests()
             end
         end
     end
-    
+
     if analyzed > 0 then
         print(string.format("|cff00ff00[QuestMaster Pro]|r Analyzed %d quests for efficiency", analyzed))
     end

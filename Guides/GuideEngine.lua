@@ -10,18 +10,20 @@ Engine.currentStepIndex = 1
 -- Initialize the guide engine
 function Engine:Initialize()
     AzerothPilot:DebugPrint("Guide Engine initialized")
-    
+
     -- Register event handlers
     AzerothPilot.EventFrame:RegisterEvent("QUEST_ACCEPTED")
     AzerothPilot.EventFrame:RegisterEvent("QUEST_TURNED_IN")
     AzerothPilot.EventFrame:RegisterEvent("QUEST_REMOVED")
     AzerothPilot.EventFrame:RegisterEvent("PLAYER_LEVEL_UP")
     AzerothPilot.EventFrame:RegisterEvent("ZONE_CHANGED_NEW_AREA")
-    
+
     -- Hook into original event handler
     local originalHandler = AzerothPilot.EventFrame:GetScript("OnEvent")
-    AzerothPilot.EventFrame:SetScript("OnEvent", function(self, event, ...)
-        originalHandler(self, event, ...)
+    AzerothPilot.EventFrame:SetScript("OnEvent", function(frame, event, ...)
+        if originalHandler then
+            originalHandler(frame, event, ...)
+        end
         Engine:OnEvent(event, ...)
     end)
 end
@@ -52,17 +54,17 @@ function Engine:StartGuide(guideId)
         AzerothPilot:Print("Guide not found: " .. tostring(guideId))
         return false
     end
-    
+
     self.activeGuide = guide
     self.currentStepIndex = 1
-    
+
     AzerothPilotCharDB.currentGuide = guideId
     AzerothPilotCharDB.currentStep = 1
     AzerothPilotCharDB.completedSteps = {}
-    
+
     AzerothPilot:Print("Started guide: " .. guide.name)
     AzerothPilot:Print("Level range: " .. guide.minLevel .. "-" .. guide.maxLevel)
-    
+
     self:UpdateCurrentStep()
     return true
 end
@@ -73,13 +75,13 @@ function Engine:StopGuide()
         AzerothPilot:Print("No active guide")
         return
     end
-    
+
     AzerothPilot:Print("Stopped guide: " .. self.activeGuide.name)
     self.activeGuide = nil
     self.currentStepIndex = 1
-    
+
     AzerothPilotCharDB.currentGuide = nil
-    
+
     if AzerothPilot.UI.Arrow then
         AzerothPilot.UI.Arrow:ClearWaypoint()
     end
@@ -90,18 +92,18 @@ function Engine:UpdateCurrentStep()
     if not self.activeGuide then
         return
     end
-    
+
     local step = self:GetCurrentStep()
     if not step then
         AzerothPilot:Print("Guide completed!")
         return
     end
-    
+
     -- Update UI
     if AzerothPilot.UI.MainFrame then
         AzerothPilot.UI.MainFrame:UpdateStep(step)
     end
-    
+
     -- Update arrow
     if step.waypoint and AzerothPilot.UI.Arrow then
         AzerothPilot.UI.Arrow:SetWaypoint({
@@ -110,7 +112,7 @@ function Engine:UpdateCurrentStep()
             title = step.title or "Objective"
         })
     end
-    
+
     AzerothPilot:DebugPrint("Step " .. self.currentStepIndex .. "/" .. #self.activeGuide.steps)
 end
 
@@ -119,7 +121,7 @@ function Engine:GetCurrentStep()
     if not self.activeGuide then
         return nil
     end
-    
+
     return self.activeGuide.steps[self.currentStepIndex]
 end
 
@@ -128,18 +130,18 @@ function Engine:NextStep()
     if not self.activeGuide then
         return false
     end
-    
+
     if self.currentStepIndex < #self.activeGuide.steps then
         table.insert(AzerothPilotCharDB.completedSteps, self.currentStepIndex)
         self.currentStepIndex = self.currentStepIndex + 1
         AzerothPilotCharDB.currentStep = self.currentStepIndex
-        
+
         self:UpdateCurrentStep()
-        
+
         if AzerothPilotDB.soundEnabled then
             PlaySound(SOUNDKIT.ALARM_CLOCK_WARNING_3)
         end
-        
+
         return true
     else
         AzerothPilot:Print("Guide completed! You're ready for the next zone!")
@@ -152,11 +154,11 @@ function Engine:PreviousStep()
     if not self.activeGuide then
         return false
     end
-    
+
     if self.currentStepIndex > 1 then
         self.currentStepIndex = self.currentStepIndex - 1
         AzerothPilotCharDB.currentStep = self.currentStepIndex
-        
+
         -- Remove from completed if it was there
         for i, step in ipairs(AzerothPilotCharDB.completedSteps) do
             if step == self.currentStepIndex then
@@ -164,11 +166,11 @@ function Engine:PreviousStep()
                 break
             end
         end
-        
+
         self:UpdateCurrentStep()
         return true
     end
-    
+
     return false
 end
 

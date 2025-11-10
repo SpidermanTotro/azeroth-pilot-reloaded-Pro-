@@ -38,8 +38,8 @@ GearAdvisor.statWeights = {
 function GearAdvisor:GetPlayerSpecialization()
     local specIndex = GetSpecialization()
     if not specIndex then return nil end
-    
-    local specID, specName = GetSpecializationInfo(specIndex)
+
+    local _, specName = GetSpecializationInfo(specIndex)
     return specName
 end
 
@@ -47,16 +47,16 @@ end
 function GearAdvisor:GetStatWeights()
     local _, class = UnitClass("player")
     local spec = self:GetPlayerSpecialization()
-    
+
     if not class or not spec then
         -- Default weights
         return {Strength = 1, Agility = 1, Intellect = 1, Stamina = 0.8}
     end
-    
+
     if self.statWeights[class] and self.statWeights[class][spec] then
         return self.statWeights[class][spec]
     end
-    
+
     -- Fallback
     return {Strength = 1, Agility = 1, Intellect = 1, Stamina = 0.8}
 end
@@ -64,19 +64,19 @@ end
 -- Calculate item score based on stats
 function GearAdvisor:CalculateItemScore(itemLink)
     if not itemLink then return 0 end
-    
+
     local stats = GetItemStats(itemLink)
     if not stats then return 0 end
-    
+
     local weights = self:GetStatWeights()
     local score = 0
-    
+
     -- Primary stats
     score = score + (stats["ITEM_MOD_STRENGTH_SHORT"] or 0) * (weights.Strength or 0)
     score = score + (stats["ITEM_MOD_AGILITY_SHORT"] or 0) * (weights.Agility or 0)
     score = score + (stats["ITEM_MOD_INTELLECT_SHORT"] or 0) * (weights.Intellect or 0)
     score = score + (stats["ITEM_MOD_STAMINA_SHORT"] or 0) * (weights.Stamina or 0)
-    
+
     -- Secondary stats
     if self.config.considerSecondaryStats then
         score = score + (stats["ITEM_MOD_CRIT_RATING_SHORT"] or 0) * (weights.CritStrike or 0)
@@ -84,7 +84,7 @@ function GearAdvisor:CalculateItemScore(itemLink)
         score = score + (stats["ITEM_MOD_MASTERY_RATING_SHORT"] or 0) * (weights.Mastery or 0)
         score = score + (stats["ITEM_MOD_VERSATILITY"] or 0) * (weights.Versatility or 0)
     end
-    
+
     return score
 end
 
@@ -92,14 +92,14 @@ end
 function GearAdvisor:CompareItems(newItemLink, currentItemLink)
     if not newItemLink then return 0, "No item to compare" end
     if not currentItemLink then return 100, "No item equipped (huge upgrade!)" end
-    
+
     local newScore = self:CalculateItemScore(newItemLink)
     local currentScore = self:CalculateItemScore(currentItemLink)
-    
+
     if currentScore == 0 then return 100, "Empty slot (equip immediately!)" end
-    
+
     local percentChange = ((newScore - currentScore) / currentScore) * 100
-    
+
     if percentChange > 0 then
         return percentChange, string.format("%.1f%% upgrade!", percentChange)
     elseif percentChange < 0 then
@@ -118,27 +118,27 @@ end
 -- Analyze quest rewards
 function GearAdvisor:AnalyzeQuestRewards(questID)
     if not self.config.autoCompareRewards then return end
-    
+
     local numRewards = GetNumQuestLogRewards(questID)
     if numRewards == 0 then return end
-    
+
     local bestReward = nil
     local bestUpgrade = -999
     local recommendations = {}
-    
+
     for i = 1, numRewards do
-        local name, texture, numItems, quality, isUsable = GetQuestLogRewardInfo(i, questID)
+        local name, _, _, _, isUsable = GetQuestLogRewardInfo(i, questID)
         if name and isUsable then
             local itemLink = GetQuestLogItemLink("reward", i)
             if itemLink then
                 local _, _, _, _, _, _, _, _, equipSlot = GetItemInfo(itemLink)
-                
+
                 -- Get slot ID from equipSlot
                 local slotID = self:GetSlotIDFromEquipSlot(equipSlot)
                 if slotID then
                     local currentItem = self:GetEquippedItem(slotID)
                     local percentChange, message = self:CompareItems(itemLink, currentItem)
-                    
+
                     table.insert(recommendations, {
                         index = i,
                         name = name,
@@ -146,7 +146,7 @@ function GearAdvisor:AnalyzeQuestRewards(questID)
                         percentChange = percentChange,
                         message = message,
                     })
-                    
+
                     if percentChange > bestUpgrade then
                         bestUpgrade = percentChange
                         bestReward = i
@@ -155,7 +155,7 @@ function GearAdvisor:AnalyzeQuestRewards(questID)
             end
         end
     end
-    
+
     -- Display recommendations
     if #recommendations > 0 then
         print("|cff00ff00[QuestMaster Pro]|r Quest Reward Analysis:")
@@ -170,10 +170,10 @@ function GearAdvisor:AnalyzeQuestRewards(questID)
             else
                 color = "|cffff0000" -- Red for downgrades
             end
-            
+
             print(string.format("  %s%s|r - %s", color, rec.name, rec.message))
         end
-        
+
         if bestReward and bestUpgrade > 5 then
             print(string.format("|cff00ff00>>> BEST CHOICE: Reward #%d (%.1f%% upgrade) <<<|r", bestReward, bestUpgrade))
         end
@@ -206,23 +206,23 @@ function GearAdvisor:GetSlotIDFromEquipSlot(equipSlot)
         INVTYPE_RANGED = 18,
         INVTYPE_RANGEDRIGHT = 18,
     }
-    
+
     return slotMap[equipSlot]
 end
 
 -- Check item on loot/receive
 function GearAdvisor:CheckItemUpgrade(itemLink)
     if not itemLink then return end
-    
+
     local _, _, _, _, _, _, _, _, equipSlot = GetItemInfo(itemLink)
     if not equipSlot or equipSlot == "" then return end
-    
+
     local slotID = self:GetSlotIDFromEquipSlot(equipSlot)
     if not slotID then return end
-    
+
     local currentItem = self:GetEquippedItem(slotID)
     local percentChange, message = self:CompareItems(itemLink, currentItem)
-    
+
     if percentChange > 10 and self.config.notifyOnUpgrade then
         -- Significant upgrade
         if QuestMasterPro.Notifications and QuestMasterPro.Notifications.ShowNotification then
@@ -233,7 +233,7 @@ function GearAdvisor:CheckItemUpgrade(itemLink)
                 "Interface\\Icons\\INV_Misc_Gem_Bloodstone_01"
             )
         end
-        
+
         print(string.format("|cff00ff00[GEAR UPGRADE]|r %s - %s", itemLink, message))
     end
 end
@@ -241,13 +241,13 @@ end
 -- Initialize
 function GearAdvisor:Initialize()
     print("|cff00ff00[QuestMaster Pro]|r Gear Advisor loaded!")
-    
+
     -- Hook quest complete events
     local frame = CreateFrame("Frame")
     frame:RegisterEvent("QUEST_COMPLETE")
     frame:RegisterEvent("CHAT_MSG_LOOT")
-    
-    frame:SetScript("OnEvent", function(self, event, ...)
+
+    frame:SetScript("OnEvent", function(_, event, ...)
         if event == "QUEST_COMPLETE" then
             local questID = ...
             if questID then

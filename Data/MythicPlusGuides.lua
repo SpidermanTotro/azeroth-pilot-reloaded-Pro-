@@ -47,7 +47,7 @@ MP.Affixes = {
         difficult_dungeons = {"Halls of Atonement", "Sanguine Depths"},
         easy_dungeons = {"Mists of Tirna Scithe", "Theater of Pain"}
     },
-    
+
     Tyrannical = {
         level = 2,
         name = "Tyrannical",
@@ -62,7 +62,7 @@ MP.Affixes = {
         difficult_dungeons = {"Spires of Ascension", "De Other Side"},
         easy_dungeons = {"Plaguefall", "Necrotic Wake"}
     },
-    
+
     -- LEVEL 4+ AFFIXES
     Bolstering = {
         level = 4,
@@ -77,7 +77,7 @@ MP.Affixes = {
         },
         best_classes = {"Demon Hunter", "Fire Mage", "Balance Druid"}
     },
-    
+
     Bursting = {
         level = 4,
         name = "Bursting",
@@ -91,7 +91,7 @@ MP.Affixes = {
         },
         healer_priority = "HIGH - this affix is all on healer!"
     },
-    
+
     Raging = {
         level = 4,
         name = "Raging",
@@ -105,7 +105,7 @@ MP.Affixes = {
         },
         required_classes = "Druid (Soothe) or Hunter (Tranq) highly valuable!"
     },
-    
+
     Sanguine = {
         level = 4,
         name = "Sanguine",
@@ -119,7 +119,7 @@ MP.Affixes = {
         },
         mvp_classes = {"Druid (Typhoon)", "Shaman (Thunderstorm)", "DK (Gorefiend's)"}
     },
-    
+
     Spiteful = {
         level = 4,
         name = "Spiteful",
@@ -133,7 +133,7 @@ MP.Affixes = {
         },
         worst_for = "Casters without mobility"
     },
-    
+
     Storming = {
         level = 4,
         name = "Storming",
@@ -146,7 +146,7 @@ MP.Affixes = {
             "Ranged have it easy this week"
         }
     },
-    
+
     -- LEVEL 7+ AFFIXES
     Explosive = {
         level = 7,
@@ -161,7 +161,7 @@ MP.Affixes = {
         },
         priority = "KILL ORBS IMMEDIATELY!"
     },
-    
+
     Grievous = {
         level = 7,
         name = "Grievous",
@@ -175,7 +175,7 @@ MP.Affixes = {
         },
         healer_difficulty = "EXTREME - hardest healing affix"
     },
-    
+
     Necrotic = {
         level = 7,
         name = "Necrotic",
@@ -190,7 +190,7 @@ MP.Affixes = {
         tank_difficulty = "EXTREME - hardest tank affix",
         best_tanks = {"Vengeance DH", "Brewmaster Monk"}
     },
-    
+
     Quaking = {
         level = 7,
         name = "Quaking",
@@ -203,7 +203,7 @@ MP.Affixes = {
             "Tanks: Face boss away during quake"
         }
     },
-    
+
     Volcanic = {
         level = 7,
         name = "Volcanic",
@@ -216,7 +216,7 @@ MP.Affixes = {
             "Melee have it easy!"
         }
     },
-    
+
     -- SEASONAL AFFIXES (Level 10+)
     Prideful = {
         level = 10,
@@ -230,7 +230,7 @@ MP.Affixes = {
             "MDT addon REQUIRED!"
         }
     },
-    
+
     Tormented = {
         level = 10,
         name = "Tormented (Shadowlands S2)",
@@ -243,7 +243,7 @@ MP.Affixes = {
             "Coordinate cooldowns"
         }
     },
-    
+
     Encrypted = {
         level = 10,
         name = "Encrypted (Shadowlands S3)",
@@ -256,7 +256,7 @@ MP.Affixes = {
             "Buffs are dangerous"
         }
     },
-    
+
     Shrouded = {
         level = 10,
         name = "Shrouded (Shadowlands S4)",
@@ -282,7 +282,7 @@ MP.Dungeons = {
         bosses = 4,
         timer = "32:00",
         difficulty = "Medium",
-        
+
         route_tips = {
             "Skip first pack with invisibility potion",
             "Pull boss 1 + nearby pack together",
@@ -290,13 +290,13 @@ MP.Dungeons = {
             "Boss 3: Stack for hooks, spread for bombs",
             "Final boss: Kill adds ASAP"
         },
-        
+
         dangerous_packs = {
             "Stitched Vanguard - Bone Spear hurts!",
             "Corpse Harvester - Drain Fluids = dispel!",
             "Nar'zudah - Mini-boss, big cooldowns"
         },
-        
+
         boss_strategies = {
             ["Blightbone"] = {
                 mechanics = "Dodge Heaving Retch, kill adds",
@@ -320,27 +320,27 @@ MP.Dungeons = {
             }
         }
     },
-    
+
     MistsOfTirnaScithe = {
         name = "Mists of Tirna Scithe",
         location = "Ardenweald",
         bosses = 3,
         timer = "30:00",
         difficulty = "Easy",
-        
+
         route_tips = {
             "Pull big - this is a fast dungeon!",
             "Maze: Go LEFT at split",
             "Boss 2 platform: Kill Spirit adds",
             "Final area: Can skip some packs"
         },
-        
+
         affix_notes = {
             Fortified = "Easy week! Trash is simple.",
             Tyrannical = "Mistcaller can be rough",
             Necrotic = "Perfect for this affix - easy kiting"
         },
-        
+
         speed_run_strats = {
             "Pull boss 1 with nearby pack",
             "Skip as much maze as possible",
@@ -348,14 +348,14 @@ MP.Dungeons = {
             "Last boss is a joke"
         }
     },
-    
+
     HallsOfAtonement = {
         name = "Halls of Atonement",
         location = "Revendreth",
         bosses = 4,
         timer = "31:00",
         difficulty = "Hard",
-        
+
         route_tips = {
             "This dungeon is BRUTAL on Fortified",
             "Gauntlet: Kill Loyal Stoneborn first!",
@@ -363,13 +363,13 @@ MP.Dungeons = {
             "Boss 3: Stand in statues!",
             "Final boss: Dodge swords, kill adds"
         },
-        
+
         dangerous_packs = {
             "Loyal Stoneborn - PRIORITY interrupts!",
             "Depraved Collector - Dispel Collect Sins!",
             "Loyal Beasts - Pack of 4, big pulls hurt"
         },
-        
+
         fortified_warning = "This is the HARDEST Fortified dungeon!",
         tyrannical_note = "Easier on Tyrannical, bosses aren't too bad"
     }
@@ -393,7 +393,7 @@ MP.Rewards = {
         [15] = {endOfRun = 220, greatVault = 236},
         [20] = {endOfRun = 226, greatVault = 246}
     },
-    
+
     seasonalRewards = {
         ["Keystone Master"] = "Complete all dungeons at +15 or higher",
         ["Keystone Hero"] = "Complete all dungeons at +20 or higher",
@@ -414,7 +414,7 @@ MP.ProTips = {
         "Some weeks allow skips with invis pots",
         "Communicate route before key starts!"
     },
-    
+
     group_composition = {
         "Lust/Heroism: Shaman, Mage, Hunter, Evoker",
         "Battle Res: Druid, Warlock, Death Knight, Paladin",
@@ -422,7 +422,7 @@ MP.ProTips = {
         "Ranged vs Melee: Depends on affixes",
         "Bring interrupts - 4-5 interrupts minimum!"
     },
-    
+
     communication = {
         "Call out cooldowns before pull",
         "Warn about dangerous mechanics",
@@ -430,7 +430,7 @@ MP.ProTips = {
         "Don't be toxic - mistakes happen!",
         "Positive attitude = higher success rate"
     },
-    
+
     consumables = {
         required = {
             "Flask of Power (Intellect/Agility/Strength)",
@@ -445,7 +445,7 @@ MP.ProTips = {
             "Weapon enchants"
         }
     },
-    
+
     addons_required = {
         "Mythic Dungeon Tools (MDT) - MUST HAVE",
         "Details! Damage Meter",
@@ -463,7 +463,7 @@ MP.ProTips = {
 MP.RatingSystem = {
     description = "Complete dungeons in time for rating",
     calculation = "Based on key level and time",
-    
+
     milestones = {
         [1000] = "Keystone Explorer - +5 all dungeons",
         [1500] = "Keystone Conqueror - +10 all dungeons",
@@ -471,7 +471,7 @@ MP.RatingSystem = {
         [2500] = "Keystone Hero - +20 all dungeons (TITLE!)",
         [3000] = "Elite tier - Top 0.1% of players"
     },
-    
+
     tips = {
         "Do all dungeons each week for Vault options",
         "Push rating early in season",

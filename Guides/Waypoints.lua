@@ -10,7 +10,7 @@ Waypoints.waypointPool = {}
 -- Initialize waypoint system
 function Waypoints:Initialize()
     AzerothPilot:DebugPrint("Waypoint system initialized")
-    
+
     -- Create waypoint pool for map pins
     for i = 1, 10 do
         local pin = CreateFrame("Frame", "APWaypoint" .. i, WorldMapFrame:GetCanvas())
@@ -34,10 +34,10 @@ function Waypoints:AddWaypoint(x, y, mapID, title, waypointType)
         type = waypointType or "objective",
         timestamp = GetTime()
     }
-    
+
     table.insert(self.activeWaypoints, waypoint)
     self:UpdateMapPins()
-    
+
     AzerothPilot:DebugPrint("Added waypoint: " .. waypoint.title)
     return waypoint
 end
@@ -64,17 +64,17 @@ function Waypoints:UpdateMapPins()
     for _, pin in ipairs(self.waypointPool) do
         pin:Hide()
     end
-    
+
     -- Show active waypoints
     for i, waypoint in ipairs(self.activeWaypoints) do
         if i <= #self.waypointPool then
             local pin = self.waypointPool[i]
-            
+
             -- Set pin position
-            pin:SetPoint("CENTER", WorldMapFrame:GetCanvas(), "TOPLEFT", 
+            pin:SetPoint("CENTER", WorldMapFrame:GetCanvas(), "TOPLEFT",
                 waypoint.x * WorldMapFrame:GetCanvas():GetWidth(),
                 -waypoint.y * WorldMapFrame:GetCanvas():GetHeight())
-            
+
             -- Color based on type
             if waypoint.type == "quest" then
                 pin.texture:SetVertexColor(1, 1, 0, 1) -- Yellow
@@ -83,7 +83,7 @@ function Waypoints:UpdateMapPins()
             else
                 pin.texture:SetVertexColor(0, 0.8, 1, 1) -- Blue
             end
-            
+
             pin:Show()
         end
     end
@@ -95,10 +95,10 @@ function Waypoints:GetNearest()
     if not playerX then
         return nil
     end
-    
+
     local nearest = nil
     local nearestDist = math.huge
-    
+
     for _, waypoint in ipairs(self.activeWaypoints) do
         if waypoint.mapID == playerMap then
             local dist = AzerothPilot.Utils:GetDistance(playerX, playerY, waypoint.x, waypoint.y)
@@ -108,7 +108,7 @@ function Waypoints:GetNearest()
             end
         end
     end
-    
+
     return nearest, nearestDist
 end
 
@@ -132,13 +132,13 @@ function Waypoints:GetCurrentMapWaypoints()
     if not playerMap then
         return {}
     end
-    
+
     local waypoints = {}
     for _, waypoint in ipairs(self.activeWaypoints) do
         if waypoint.mapID == playerMap then
             table.insert(waypoints, waypoint)
         end
     end
-    
+
     return waypoints
 end

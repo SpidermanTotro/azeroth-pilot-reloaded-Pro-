@@ -17,7 +17,7 @@ Routes.ElwynnForest = {
     author = "Azeroth Pilot Pro Team",
     version = "1.0.0",
     lastUpdated = "2025-11-09",
-    
+
     steps = {
         {
             title = "Accept Starting Quests",
@@ -59,7 +59,7 @@ Routes.Durotar = {
     author = "Azeroth Pilot Pro Team",
     version = "1.0.0",
     lastUpdated = "2025-11-09",
-    
+
     steps = {
         {
             title = "Your Place In The World",
@@ -94,7 +94,7 @@ Routes.JadeForest = {
     version = "1.0.0",
     lastUpdated = "2025-11-09",
     expansion = "Pandaria",
-    
+
     steps = {
         {
             title = "Alliance: The King's Command",
@@ -166,7 +166,7 @@ function Routes:Initialize()
     AzerothPilot.Database:RegisterGuide(self.ElwynnForest)
     AzerothPilot.Database:RegisterGuide(self.Durotar)
     AzerothPilot.Database:RegisterGuide(self.JadeForest)
-    
+
     AzerothPilot:Print("Loaded " .. self:GetGuideCount() .. " leveling guides")
     AzerothPilot:Print("Including FRESH Pandaria Classic guides - updated for 2025!")
 end

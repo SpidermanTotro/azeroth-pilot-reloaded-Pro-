@@ -22,14 +22,15 @@ AzerothPilot.UI = {}
 AzerothPilot.Guides = {}
 AzerothPilot.Data = {}
 
--- Debug flag
+-- Debug flag (will be loaded from saved variables on Initialize).
+-- Default to false so debug output is disabled unless the user enables it.
 AzerothPilot.Debug = false
 
 -- Initialization function
 function AzerothPilot:Initialize()
     self:Print("Azeroth Pilot Reloaded Pro v" .. self.Version .. " loaded!")
     self:Print("The ultimate leveling guide - ahead of the game for 2025!")
-    
+
     -- Initialize database
     if not AzerothPilotDB then
         AzerothPilotDB = {
@@ -41,7 +42,13 @@ function AzerothPilot:Initialize()
             soundEnabled = true,
         }
     end
-    
+
+    -- Load debug setting from saved variables so the user's preference persists
+    if AzerothPilotDB.debug == nil then
+        AzerothPilotDB.debug = false
+    end
+    self.Debug = AzerothPilotDB.debug
+
     if not AzerothPilotCharDB then
         AzerothPilotCharDB = {
             currentGuide = nil,
@@ -49,7 +56,7 @@ function AzerothPilot:Initialize()
             completedSteps = {},
         }
     end
-    
+
     self:DebugPrint("Initialization complete")
 end
 
@@ -70,7 +77,7 @@ AzerothPilot.EventFrame = CreateFrame("Frame")
 AzerothPilot.EventFrame:RegisterEvent("ADDON_LOADED")
 AzerothPilot.EventFrame:RegisterEvent("PLAYER_LOGIN")
 
-AzerothPilot.EventFrame:SetScript("OnEvent", function(self, event, ...)
+AzerothPilot.EventFrame:SetScript("OnEvent", function(_, event, ...)
     if event == "ADDON_LOADED" then
         local addonName = ...
         -- support both old and new folder names so users can rename the folder without breaking

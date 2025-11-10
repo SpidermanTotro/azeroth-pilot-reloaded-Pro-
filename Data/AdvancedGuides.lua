@@ -16,7 +16,7 @@ Achieve.Loremaster = {
     title = "Loremaster",
     difficulty = "Time-Consuming",
     estimatedTime = "100-150 hours",
-    
+
     requirements = {
         alliance = {
             { zone = "Eastern Kingdoms", achievement = 1676, quests = 700 },
@@ -31,7 +31,7 @@ Achieve.Loremaster = {
             { zone = "Shadowlands", achievement = 14280, quests = 170 }
         }
     },
-    
+
     tips = {
         "Use APR Pro's auto-routing for most efficient path!",
         "Complete zones while leveling alts",
@@ -39,7 +39,7 @@ Achieve.Loremaster = {
         "Check Wowhead for removed quests",
         "Takes 100+ hours but very rewarding!"
     },
-    
+
     rewards = {
         title = "Loremaster",
         tabard = "Loremaster's Colors",
@@ -55,7 +55,7 @@ Achieve.Exalted = {
     points = 25,
     difficulty = "Very Time-Consuming",
     estimatedTime = "300-500 hours",
-    
+
     fastestReps = {
         { faction = "Timbermaw Hold", method = "Grind beads in Felwood", time = "2-3 hours" },
         { faction = "Ravenholdt", method = "Junkboxes/Lockboxes", time = "8-10 hours" },
@@ -65,7 +65,7 @@ Achieve.Exalted = {
         { faction = "Kurenai/Mag'har", method = "Nagrand beads", time = "6-8 hours" },
         { faction = "Cenarion Circle", method = "AQ20/40 runs", time = "10-15 hours" }
     },
-    
+
     tips = {
         "Do ALL Pandaria dailies - 15+ reps!",
         "Complete Draenor Trading Post - easy exalted",
@@ -84,7 +84,7 @@ Gold.FastGoldMethods = {
     id = "gold_fast_methods",
     name = "Fast Gold-Making Methods (10k-50k/hour)",
     description = "Make MORE gold than Zygor users - and it's FREE!",
-    
+
     methods = {
         {
             name = "Raw Gold Farming",
@@ -152,7 +152,7 @@ Gold.FastGoldMethods = {
             }
         }
     },
-    
+
     longTermStrategies = {
         {
             name = "Mission Table Gold",
@@ -174,7 +174,7 @@ Gold.FastGoldMethods = {
             }
         }
     },
-    
+
     expertTips = {
         "Farm during off-hours (less competition)",
         "Use server hopping for rare spawns",
@@ -190,7 +190,7 @@ Gold.ProfitableProf = {
     id = "gold_profitable_professions",
     name = "Most Profitable Professions 2025",
     description = "Make MILLIONS with the right professions!",
-    
+
     rankings = {
         {
             rank = 1,
@@ -238,7 +238,7 @@ Pets.PowerLeveling = {
     id = "pet_powerleveling",
     name = "Pet Power-Leveling Guide (1-25 in 30 mins)",
     description = "Level pets FASTER than Zygor's guide - 100% FREE!",
-    
+
     methods = {
         {
             name = "Squirt Method (Best!)",
@@ -274,7 +274,7 @@ Pets.PowerLeveling = {
             strategy = "Do all Pandaria tamers daily = huge XP"
         }
     },
-    
+
     bestCarryPets = {
         "Unborn Val'kyr - Curse of Doom strat",
         "Ikky - Black Claw + Flock combo",
@@ -287,7 +287,7 @@ Pets.Collection = {
     id = "pet_collection_guide",
     name = "Collect 1500+ Pets Guide",
     description = "Catch 'em all! More comprehensive than Zygor!",
-    
+
     easyPets = {
         "World spawns - 500+ pets across Azeroth",
         "Quest rewards - 100+ free pets",
@@ -295,14 +295,14 @@ Pets.Collection = {
         "Vendor pets - 100+ for gold",
         "Drop pets - Farm old raids/dungeons"
     },
-    
+
     rarePets = {
         { name = "Unborn Val'kyr", location = "Northrend", spawn = "8-12 hours", value = "50k-100k" },
         { name = "Minfernal", location = "Felwood", spawn = "Rare", value = "30k" },
         { name = "Scourged Whelpling", location = "Icecrown", spawn = "Uncommon", value = "20k" },
         { name = "Disgusting Oozeling", location = "Drops from oozes", spawn = "0.01%", value = "100k+" }
     },
-    
+
     achievementPets = {
         "Celestial Dragon - Collect 400 pets",
         "Stormwind Rat - Collect 600 pets",
@@ -316,7 +316,7 @@ Pets.PVPGuide = {
     id = "pet_pvp_guide",
     name = "Pet Battle PVP Guide",
     description = "Dominate PVP pet battles!",
-    
+
     metaTeams = {
         {
             name = "Unborn Val'kyr + Teroclaw Hatchling + Bone Serpent",
@@ -340,7 +340,7 @@ Mounts.RareMounts = {
     id = "mount_farming_guide",
     name = "Rare Mount Farming Guide",
     description = "Farm 400+ mounts - Complete FREE guide!",
-    
+
     soloable = {
         {
             mount = "Invincible's Reins",
@@ -372,7 +372,7 @@ Mounts.RareMounts = {
             time = "5 mins/day"
         }
     },
-    
+
     reputation = {
         { mount = "Winterspring Frostsaber", rep = "Wintersaber Trainers", time = "20-40 hours" },
         { mount = "Kurenai/Mag'har Talbuks (8 colors)", rep = "Kurenai/Mag'har", time = "15-25 hours" }

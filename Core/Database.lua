@@ -14,7 +14,7 @@ function DB:RegisterGuide(guideData)
         AzerothPilot:Print("Error: Invalid guide data")
         return false
     end
-    
+
     self.Guides[guideData.id] = guideData
     AzerothPilot:DebugPrint("Registered guide: " .. guideData.name)
     return true
@@ -28,7 +28,7 @@ end
 -- Get all guides
 function DB:GetAllGuides()
     local guides = {}
-    for id, guide in pairs(self.Guides) do
+    for _, guide in pairs(self.Guides) do
         table.insert(guides, guide)
     end
     return guides
@@ -41,11 +41,11 @@ function DB:LoadGuide(guideId)
         AzerothPilot:Print("Guide not found: " .. tostring(guideId))
         return false
     end
-    
+
     self.CurrentGuide = guide
     AzerothPilotCharDB.currentGuide = guideId
     AzerothPilotCharDB.currentStep = 1
-    
+
     AzerothPilot:Print("Loaded guide: " .. guide.name)
     return true
 end
@@ -55,7 +55,7 @@ function DB:GetCurrentStep()
     if not self.CurrentGuide then
         return nil
     end
-    
+
     local stepIndex = AzerothPilotCharDB.currentStep or 1
     return self.CurrentGuide.steps[stepIndex]
 end
@@ -65,10 +65,10 @@ function DB:NextStep()
     if not self.CurrentGuide then
         return false
     end
-    
+
     local currentStep = AzerothPilotCharDB.currentStep or 1
     table.insert(AzerothPilotCharDB.completedSteps, currentStep)
-    
+
     if currentStep < #self.CurrentGuide.steps then
         AzerothPilotCharDB.currentStep = currentStep + 1
         AzerothPilot:Print("Step " .. AzerothPilotCharDB.currentStep .. "/" .. #self.CurrentGuide.steps)

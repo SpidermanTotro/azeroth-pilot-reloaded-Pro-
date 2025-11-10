@@ -36,7 +36,7 @@ Zones.Classic = {
         hubs = {"Ammen Vale", "Azure Watch"},
         questCount = 85, avgTime = "2.5-3.5 hours", reputation = "Exodar"
     },
-    
+
     -- HORDE STARTING ZONES (1-10)
     Durotar = {
         id = 1411, name = "Durotar", faction = "Horde", level = "1-10",
@@ -62,7 +62,7 @@ Zones.Classic = {
         hubs = {"Sunstrider Isle", "Falconwing Square", "Fairbreeze Village", "Silvermoon City"},
         questCount = 100, avgTime = "3-4 hours", reputation = "Silvermoon City"
     },
-    
+
     -- ALLIANCE MID-LEVEL ZONES
     Westfall = {
         id = 1436, name = "Westfall", faction = "Alliance", level = "10-20",
@@ -80,7 +80,7 @@ Zones.Classic = {
         continent = "Kalimdor", questCount = 90, avgTime = "3-4 hours",
         hubs = {"Auberdine", "Grove of the Ancients"}, reputation = "Darnassus"
     },
-    
+
     -- HORDE MID-LEVEL ZONES
     TheBarrens = {
         id = 1413, name = "The Barrens (Northern)", faction = "Horde", level = "10-25",
@@ -95,7 +95,7 @@ Zones.Classic = {
         hubs = {"The Sepulcher", "Forsaken High Command"}, reputation = "Undercity",
         dungeons = {"Shadowfang Keep"}
     },
-    
+
     -- CONTESTED ZONES (20-60)
     Redridge = {
         id = 1433, name = "Redridge Mountains", faction = "Alliance", level = "15-25",
@@ -262,7 +262,7 @@ Zones.Pandaria = {
         note = "Starting zone - AMAZING questline!"
     },
     ValleyFourWinds = {
-        id = 1530, name = "Valley of the Four Winds", level = "85-86", continent = "Pandaria",
+        id = 1536, name = "Valley of the Four Winds", level = "85-86", continent = "Pandaria",
         questCount = 130, hubs = {"Halfhill", "Stoneplow"},
         dungeons = {"Stormstout Brewery"}, reputation = {"The Tillers"},
         note = "Farming zone! Best herbs in Pandaria!"
@@ -286,7 +286,7 @@ Zones.Pandaria = {
         note = "Mantid zone - creepy but cool!"
     },
     ValeEternalBlossoms = {
-        id = 1530, name = "Vale of Eternal Blossoms", level = "90", continent = "Pandaria",
+        id = 1537, name = "Vale of Eternal Blossoms", level = "90", continent = "Pandaria",
         questCount = 50, hubs = {"Shrine of Seven Stars (A)", "Shrine of Two Moons (H)"},
         dungeons = {"Mogu'shan Palace", "Terrace of Endless Spring", "Siege of Orgrimmar"}
     },

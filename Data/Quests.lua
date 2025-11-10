@@ -12,7 +12,7 @@ function Quests:Register(questData)
     if not questData or not questData.id then
         return false
     end
-    
+
     self.database[questData.id] = questData
     return true
 end
@@ -105,13 +105,13 @@ Quests:Register({
 Quests.chains = {
     -- Elwynn Forest starter chain
     ElwynnStarter = { 783, 5261, 33, 34, 35 },
-    
+
     -- Durotar starter chain
     DurotarStarter = { 25132, 25133, 25134, 25135 },
-    
+
     -- Pandaria intro chain (Alliance)
     PandariaIntroAlliance = { 29548, 29611, 29612, 29615 },
-    
+
     -- Pandaria intro chain (Horde)
     PandariaIntroHorde = { 31853, 31854, 31855 }
 }
@@ -139,13 +139,13 @@ function Quests:GetNextInChain(questID)
     if not chain then
         return nil
     end
-    
+
     for i, qID in ipairs(chain) do
         if qID == questID and i < #chain then
             return chain[i + 1]
         end
     end
-    
+
     return nil
 end
 
@@ -164,13 +164,13 @@ function Quests:MeetsRequirements(questID)
     if not questData then
         return false
     end
-    
+
     -- Check level
     local playerLevel = UnitLevel("player")
     if questData.level and playerLevel < questData.level then
         return false
     end
-    
+
     -- Check faction
     if questData.faction then
         local playerFaction = UnitFactionGroup("player")
@@ -178,7 +178,7 @@ function Quests:MeetsRequirements(questID)
             return false
         end
     end
-    
+
     return true
 end
 

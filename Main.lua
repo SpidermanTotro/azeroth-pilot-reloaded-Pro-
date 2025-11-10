@@ -14,7 +14,7 @@ SLASH_QUESTMASTER3 = "/qmpro"
 function SlashCmdList.AZEROTHPILOT(msg)
     local command, arg = msg:match("^(%S*)%s*(.-)$")
     command = command:lower()
-    
+
     if command == "" or command == "help" then
         AzerothPilot:ShowHelp()
     elseif command == "start" then
@@ -38,7 +38,10 @@ function SlashCmdList.AZEROTHPILOT(msg)
     elseif command == "reset" then
         AzerothPilot:ResetProgress()
     elseif command == "debug" then
+        -- Toggle debug and persist to saved variables so the choice survives reloads
         AzerothPilot.Debug = not AzerothPilot.Debug
+        if not AzerothPilotDB then AzerothPilotDB = {} end
+        AzerothPilotDB.debug = AzerothPilot.Debug
         AzerothPilot:Print("Debug mode: " .. (AzerothPilot.Debug and "ON" or "OFF"))
     elseif command == "version" or command == "v" then
         AzerothPilot:ShowVersion()
@@ -52,7 +55,7 @@ end
 function SlashCmdList.QUESTMASTER(msg)
     local command, arg = msg:match("^(%S*)%s*(.-)$")
     command = command:lower()
-    
+
     if command == "" or command == "help" then
         print("|cFF00D4FF╔════════════════════════════════════════════╗|r")
         print("|cFF00D4FF║|r  |cFF00D4FFQuest|r|cFFFFD700Master Pro|r Commands  |cFF00D4FF║|r")
@@ -120,7 +123,7 @@ function AzerothPilot:StartGuideCommand(guideId)
         -- Auto-detect appropriate guide
         local level = UnitLevel("player")
         local faction = UnitFactionGroup("player")
-        
+
         if level <= 10 then
             if faction == "Alliance" then
                 guideId = "elwynn_1_10"
@@ -133,10 +136,10 @@ function AzerothPilot:StartGuideCommand(guideId)
             self:Print("No guide auto-detected for your level. Use /ap guides to see all guides.")
             return
         end
-        
+
         self:Print("Auto-detected guide: " .. guideId)
     end
-    
+
     AzerothPilot.Guides.Engine:StartGuide(guideId)
     AzerothPilot.UI.MainFrame:Show()
 end
@@ -145,21 +148,21 @@ end
 function AzerothPilot:ListGuides()
     self:Print("=== Available Guides ===")
     local guides = AzerothPilot.Database:GetAllGuides()
-    
+
     if #guides == 0 then
         print("No guides loaded!")
         return
     end
-    
+
     for _, guide in ipairs(guides) do
         local color = guide.faction == "Alliance" and "0080FF" or (guide.faction == "Horde" and "FF0000" or "FFFF00")
-        print(string.format("|cFF%s[%d-%d]|r %s |cFFAAAAAA(%s)|r", 
+        print(string.format("|cFF%s[%d-%d]|r %s |cFFAAAAAA(%s)|r",
             color, guide.minLevel, guide.maxLevel, guide.name, guide.id))
         if guide.expansion then
             print("  |cFF00FF00" .. guide.expansion .. " Content - FRESH 2025!|r")
         end
     end
-    
+
     print(" ")
     print("Use |cFFFFFF00/ap start [guide-id]|r to start a guide")
 end
@@ -179,11 +182,11 @@ function AzerothPilot:ResetProgress()
     AzerothPilotCharDB.currentGuide = nil
     AzerothPilotCharDB.currentStep = 1
     AzerothPilotCharDB.completedSteps = {}
-    
+
     if AzerothPilot.Guides.Engine.activeGuide then
         AzerothPilot.Guides.Engine:StopGuide()
     end
-    
+
     self:Print("Progress reset!")
 end
 
@@ -209,33 +212,33 @@ function AzerothPilot:OnPlayerLogin()
     AzerothPilot.Data.Routes:Initialize()
     AzerothPilot.Data.Legion:Initialize()
     AzerothPilot.Data.Professions:Initialize()
-    
+
     -- Initialize advanced guides
     local AdvancedGuides = AzerothPilot.Data.AdvancedGuides or {}
     if AdvancedGuides.Achievements then AdvancedGuides.Achievements:Initialize() end
     if AdvancedGuides.GoldMaking then AdvancedGuides.GoldMaking:Initialize() end
     if AdvancedGuides.PetBattles then AdvancedGuides.PetBattles:Initialize() end
     if AdvancedGuides.Mounts then AdvancedGuides.Mounts:Initialize() end
-    
+
     AzerothPilot.Guides.Engine:Initialize()
     AzerothPilot.Guides.QuestTracker:Initialize()
     AzerothPilot.Guides.Waypoints:Initialize()
     AzerothPilot.UI.Arrow:Initialize()
     AzerothPilot.UI.Settings:Initialize()
-    
+
     -- Initialize PTR Integration
     AzerothPilot.PTR:Initialize()
-    
+
     -- Initialize STUNNING Modern UI
     AzerothPilot.UI.Modern:Initialize()
-    
+
     -- Initialize NEW GAME-CHANGING Features!
     if QuestMasterPro.Travel then QuestMasterPro.Travel:Initialize() end
     if QuestMasterPro.QuestSkip then QuestMasterPro.QuestSkip:Initialize() end
     if QuestMasterPro.Notifications then QuestMasterPro.Notifications:Initialize() end
     if QuestMasterPro.GearAdvisor then QuestMasterPro.GearAdvisor:Initialize() end
     if QuestMasterPro.XPTracker then QuestMasterPro.XPTracker:Initialize() end
-    
+
     -- Show welcome message
     self:Print("╔════════════════════════════════════════════╗")
     self:Print("║  |cFF00D4FFQuest|r|cFFFFD700Master Pro|r v1.0  ║")
@@ -251,7 +254,7 @@ function AzerothPilot:OnPlayerLogin()
     self:Print("|cFF00FF00✓|r 100% FREE - Save $120/year!")
     self:Print(" ")
     self:Print("Type |cFFFFD700/qmp|r for commands  |  |cFFFFD700/xptrack toggle|r for XP tracker!")
-    
+
     -- Resume guide if active
     if AzerothPilotCharDB.currentGuide then
         local guide = AzerothPilot.Database:GetGuide(AzerothPilotCharDB.currentGuide)

@@ -18,7 +18,7 @@ Legion.BrokenShoreIntroAlliance = {
     author = "APR Pro Team",
     version = "1.0.0",
     lastUpdated = "2025-11-09",
-    
+
     steps = {
         {
             title = "The Legion Returns",
@@ -58,7 +58,7 @@ Legion.Azsuna = {
     author = "APR Pro Team",
     version = "1.0.0",
     lastUpdated = "2025-11-09",
-    
+
     steps = {
         {
             title = "The Warden's Signet",
@@ -115,7 +115,7 @@ Legion.Valsharah = {
     author = "APR Pro Team",
     version = "1.0.0",
     lastUpdated = "2025-11-09",
-    
+
     steps = {
         {
             title = "The Tranquil Forest",
@@ -156,7 +156,7 @@ Legion.Highmountain = {
     author = "APR Pro Team",
     version = "1.0.0",
     lastUpdated = "2025-11-09",
-    
+
     steps = {
         {
             title = "The Rivermane Tribe",
@@ -198,7 +198,7 @@ Legion.Stormheim = {
     author = "APR Pro Team",
     version = "1.0.0",
     lastUpdated = "2025-11-09",
-    
+
     steps = {
         {
             title = "The Windrunner",
@@ -241,7 +241,7 @@ Legion.Suramar = {
     author = "APR Pro Team",
     version = "1.0.0",
     lastUpdated = "2025-11-09",
-    
+
     steps = {
         {
             title = "An Audience with the Nightborne",
@@ -282,7 +282,7 @@ Legion.LegionAssaults = {
     author = "APR Pro Team",
     version = "1.0.0",
     lastUpdated = "2025-11-09",
-    
+
     steps = {
         {
             title = "Check Weekly Assault",
@@ -321,7 +321,7 @@ Legion.Argus = {
     author = "APR Pro Team",
     version = "1.0.0",
     lastUpdated = "2025-11-09",
-    
+
     steps = {
         {
             title = "The Hand of Fate",
@@ -365,7 +365,7 @@ function Legion:Initialize()
     AzerothPilot.Database:RegisterGuide(self.Suramar)
     AzerothPilot.Database:RegisterGuide(self.LegionAssaults)
     AzerothPilot.Database:RegisterGuide(self.Argus)
-    
+
     AzerothPilot:Print("Legion guides loaded - COMPLETE coverage ahead of competitors!")
     AzerothPilot:Print("Including Legion Remix support!")
 end
@@ -376,7 +376,7 @@ Legion.RemixFeatures = {
     bronzeBonus = 1.5, -- 50% more Bronze earned
     threadBonus = 2.0, -- 100% more threads
     fastLeveling = true,
-    
+
     -- Optimal farming routes for Legion Remix
     farmingRoutes = {
         bronze = {
