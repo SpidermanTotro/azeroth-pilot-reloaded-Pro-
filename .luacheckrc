@@ -1,17 +1,4 @@
 return {
-    std = "lua51",
-    globals = {
-        -- Addon globals
-        "QuestMasterPro", "QuestMasterProDB", "QuestMasterProCharDB",
-        -- WoW API
-        "CreateFrame", "UIParent", "GameTooltip", "C_Timer", "C_QuestLog", "C_Map",
-        "UnitXP", "UnitXPMax", "UnitLevel", "UnitExists", "UnitGUID", "UnitName", "UnitClass", "UnitFactionGroup",
-        "GetTime", "GetZoneText", "GetSubZoneText", "GetItemInfo", "GetInventoryItemLink", "GetSpecialization",
-        "SlashCmdList", "InterfaceOptions_AddCategory", "InterfaceOptionsFrame_OpenToCategory",
-    },
-    max_line_length = 140,
-}
-return {
     -- World of Warcraft addons target Lua 5.1 semantics
     std = "lua51",
 
