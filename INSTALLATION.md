@@ -6,12 +6,12 @@
 
 1. **Download the Addon**
    - Download the latest release from GitHub
-   - Or clone this repository: `git clone https://github.com/SpidermanTotro/azeroth-pilot-reloaded-Pro-.git`
+   - Or clone this repository: `git clone https://github.com/SpidermanTotro/QuestMaster-Pro.git`
 
 2. **Install to WoW Directory**
    - Locate your World of Warcraft installation folder
    - Navigate to `Interface\AddOns\`
-   - Copy the entire `azeroth-pilot-reloaded-Pro-` folder here
+   - Copy the entire `QuestMaster-Pro/` folder here
    - Rename it to `QuestMasterPro` (remove the trailing dash if present)
 
 3. **Verify Installation**
@@ -206,7 +206,7 @@ Opens M+ guide system with current affix rotation and strategies.
 ```
 
 ### Online Resources
-- **GitHub Issues**: https://github.com/SpidermanTotro/azeroth-pilot-reloaded-Pro-/issues
+- **GitHub Issues**: https://github.com/SpidermanTotro/QuestMaster-Pro/issues
 - **Documentation**: See README.md
 - **Contributing**: See CONTRIBUTING.md
 

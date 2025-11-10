@@ -4,7 +4,7 @@
 
 [![License](https://img.shields.io/badge/License-GPL%20v3-blue.svg)](LICENSE)
 [![WoW Version](https://img.shields.io/badge/WoW-11.0.7+-orange.svg)](https://worldofwarcraft.com)
-[![Status](https://img.shields.io/badge/Status-Ready-brightgreen.svg)](https://github.com/SpidermanTotro/azeroth-pilot-reloaded-Pro-)
+[![Status](https://img.shields.io/badge/Status-Ready-brightgreen.svg)](https://github.com/SpidermanTotro/QuestMaster-Pro)
 
 > **Formerly known as**: "Azeroth Pilot Reloaded Pro" - Rebranded to **QuestMaster Pro** for legal safety and unique identity!
 
@@ -322,7 +322,7 @@ GPL-3.0 License - See [LICENSE](LICENSE) file
 
 ## 🔗 Links
 
-- **GitHub**: https://github.com/SpidermanTotro/azeroth-pilot-reloaded-Pro-
+- **GitHub**: https://github.com/SpidermanTotro/QuestMaster-Pro
 - **Issues**: Report bugs or request features
 - **Discussions**: Community help and feedback
 
@@ -331,9 +331,9 @@ GPL-3.0 License - See [LICENSE](LICENSE) file
 ## 📢 Support & Community
 
 ### For Users
-- 🐛 [Report Issues](https://github.com/SpidermanTotro/azeroth-pilot-reloaded-Pro-/issues)
-- 💡 [Request Features](https://github.com/SpidermanTotro/azeroth-pilot-reloaded-Pro-/issues/new)
-- 🤝 [Contribute](https://github.com/SpidermanTotro/azeroth-pilot-reloaded-Pro-/pulls)
+- 🐛 [Report Issues](https://github.com/SpidermanTotro/QuestMaster-Pro/issues)
+- 💡 [Request Features](https://github.com/SpidermanTotro/QuestMaster-Pro/issues/new)
+- 🤝 [Contribute](https://github.com/SpidermanTotro/QuestMaster-Pro/pulls)
 
 ### Legal Notice
 "World of Warcraft" and "WoW" are trademarks of Blizzard Entertainment, Inc.  
@@ -348,7 +348,7 @@ This addon is not affiliated with or endorsed by Blizzard Entertainment.
 **The NEXT GENERATION leveling addon for World of Warcraft - Built for 2025 and beyond!**
 
 [![Discord](https://img.shields.io/badge/Discord-Join%20Us-7289da.svg)](https://discord.gg/placeholder)
-[![GitHub](https://img.shields.io/badge/GitHub-Contribute-181717.svg)](https://github.com/SpidermanTotro/azeroth-pilot-reloaded-Pro-)
+[![GitHub](https://img.shields.io/badge/GitHub-Contribute-181717.svg)](https://github.com/SpidermanTotro/QuestMaster-Pro)
 [![License](https://img.shields.io/badge/License-GPL%20v3-blue.svg)](LICENSE)
 
 ## 🚀 Why Azeroth Pilot Reloaded Pro?
@@ -564,9 +564,9 @@ GPL-3.0 License - See LICENSE file for details
 
 ## 🔗 Links
 
-- **GitHub**: https://github.com/SpidermanTotro/azeroth-pilot-reloaded-Pro-
-- **Issues**: https://github.com/SpidermanTotro/azeroth-pilot-reloaded-Pro-/issues
-- **Discussions**: https://github.com/SpidermanTotro/azeroth-pilot-reloaded-Pro-/discussions
+- **GitHub**: https://github.com/SpidermanTotro/QuestMaster-Pro
+- **Issues**: https://github.com/SpidermanTotro/QuestMaster-Pro/issues
+- **Discussions**: https://github.com/SpidermanTotro/QuestMaster-Pro/discussions
 
 ---
 
@@ -574,9 +574,9 @@ GPL-3.0 License - See LICENSE file for details
 
 Found a bug? Have a suggestion? Want to contribute?
 
-- 🐛 [Report Issues](https://github.com/SpidermanTotro/azeroth-pilot-reloaded-Pro-/issues)
-- 💡 [Request Features](https://github.com/SpidermanTotro/azeroth-pilot-reloaded-Pro-/issues/new)
-- 🤝 [Contribute](https://github.com/SpidermanTotro/azeroth-pilot-reloaded-Pro-/pulls)
+- 🐛 [Report Issues](https://github.com/SpidermanTotro/QuestMaster-Pro/issues)
+- 💡 [Request Features](https://github.com/SpidermanTotro/QuestMaster-Pro/issues/new)
+- 🤝 [Contribute](https://github.com/SpidermanTotro/QuestMaster-Pro/pulls)
 
 ---
 

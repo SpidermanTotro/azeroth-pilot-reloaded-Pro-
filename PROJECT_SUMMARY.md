@@ -19,7 +19,7 @@
 ## 🗂️ File Structure
 
 ```
-azeroth-pilot-reloaded-Pro-/
+QuestMaster-Pro/
 ├── AzerothPilotReloadedPro.toc    # Addon metadata & load order
 ├── Main.lua                        # Entry point & slash commands
 │
