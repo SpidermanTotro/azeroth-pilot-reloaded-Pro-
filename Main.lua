@@ -12,7 +12,7 @@ SLASH_QUESTMASTER2 = "/questmaster"
 SLASH_QUESTMASTER3 = "/qmpro"
 
 function SlashCmdList.AZEROTHPILOT(msg)
-    local command, arg = msg:match("^(%S*)%s*(.-)$")
+    local command = msg:match("^(%S*)") or ""
     command = command:lower()
 
     if command == "" or command == "help" then
