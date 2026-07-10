@@ -46,5 +46,8 @@ return {
     -- Skip linting large data files to focus on code logic warnings
     exclude_files = {"Data/*.lua"},
 
+    -- Colon-method declarations intentionally receive self even when a method does not need it
+    ignore = {"212/self"},
+
     -- Common Lua globals sometimes used in WoW addons
 }
