@@ -38,7 +38,7 @@ function Arrow:Initialize()
     self.frame:SetScript("OnDragStop", function(f) f:StopMovingOrSizing() end)
 
     -- Update timer
-    self.frame:SetScript("OnUpdate", function(f, elapsed)
+    self.frame:SetScript("OnUpdate", function(_, elapsed)
         Arrow:OnUpdate(elapsed)
     end)
 
