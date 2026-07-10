@@ -414,7 +414,7 @@ function ModernUI:CreateModernButton(parent, text, width)
 end
 
 -- Create Icon Button
-function ModernUI:CreateIconButton(parent, type, texture)
+function ModernUI:CreateIconButton(parent, _, texture)
     local btn = CreateFrame("Button", nil, parent)
     btn:SetSize(20, 20)
 
@@ -468,7 +468,7 @@ function ModernUI:CreateMinimapButton()
     btn:SetPoint("TOPLEFT", Minimap, "TOPLEFT", -10, 10)
 
     -- Click handler
-    btn:SetScript("OnClick", function(mb, button)
+    btn:SetScript("OnClick", function(_, button)
         if button == "LeftButton" then
             if ModernUI.mainWindow:IsShown() then
                 ModernUI.mainWindow:Hide()
