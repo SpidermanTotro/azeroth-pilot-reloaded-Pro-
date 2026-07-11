@@ -86,7 +86,7 @@ function SlashCmdList.QUESTMASTER(msg)
         print("  vs RestedXP: More features, no paywall")
         print("  vs Dugi: More reliable, open source")
         print(" ")
-        print("|cFFFFD700NEW in v1.0:|r")
+        print("|cFFFFD700NEW in v" .. AzerothPilot.Version .. ":|r")
         print("  ✓ Auto Hearth Optimizer")
         print("  ✓ Smart Quest Skip Logic")
         print("  ✓ Intelligent Notifications")
@@ -159,7 +159,7 @@ function AzerothPilot:ListGuides()
         print(string.format("|cFF%s[%d-%d]|r %s |cFFAAAAAA(%s)|r",
             color, guide.minLevel, guide.maxLevel, guide.name, guide.id))
         if guide.expansion then
-            print("  |cFF00FF00" .. guide.expansion .. " Content - FRESH 2025!|r")
+            print("  |cFF00FF00" .. guide.expansion .. " Content - CURRENT!|r")
         end
     end
 
@@ -202,7 +202,7 @@ function AzerothPilot:ShowVersion()
     self:Print("  - RestedXP (limited features)")
     self:Print("  - Dugi Guides (paid only)")
     self:Print(" ")
-    self:Print("|cFFFFFF00Fresh updates for 2025!|r")
+    self:Print("|cFFFFFF00Current patch support!|r")
     self:Print("Including Pandaria Classic guides!")
 end
 
