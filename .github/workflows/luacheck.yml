@@ -31,6 +31,30 @@ jobs:
             luac5.1 -p "$file"
           done < <(find . -type f -name '*.lua' -print0)
 
+      - name: Validate TOC manifests
+        shell: bash
+        run: |
+          python3 - <<'PY'
+          from pathlib import Path
+
+          manifests = sorted(Path(".").glob("*.toc"))
+          if not manifests:
+              raise SystemExit("No TOC manifests found")
+
+          for manifest in manifests:
+              missing = []
+              for raw_line in manifest.read_text(encoding="utf-8").splitlines():
+                  line = raw_line.strip()
+                  if not line or line.startswith("#"):
+                      continue
+                  path = Path(line.replace("\\", "/"))
+                  if not path.is_file():
+                      missing.append(line)
+              if missing:
+                  raise SystemExit(f"{manifest}: missing referenced files: {', '.join(missing)}")
+              print(f"{manifest}: all referenced files exist")
+          PY
+
       - name: Install Luacheck
         run: |
           luarocks --lua-version=5.1 install luacheck 1.2.0 --local
