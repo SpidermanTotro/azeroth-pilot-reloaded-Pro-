@@ -3,8 +3,8 @@
 
 -- Create global addon namespace
 AzerothPilot = AzerothPilot or {}
-AzerothPilot.Version = "1.0.0"
-AzerothPilot.BuildDate = "2025-11-09"
+AzerothPilot.Version = "1.1.0"
+AzerothPilot.BuildDate = "2026-07-11"
 
 -- Backwards/forwards compatibility: some modules reference QuestMasterPro while core uses AzerothPilot.
 -- Ensure a shared table exists so both sets of modules work regardless of folder name.
