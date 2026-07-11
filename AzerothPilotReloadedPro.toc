@@ -26,8 +26,8 @@ Core\GearAdvisor.lua
 Core\XPTracker.lua
 
 # UI Files - STUNNING Modern Interface!
-UI\MainFrame.xml
 UI\MainFrame.lua
+UI\MainFrame.xml
 UI\SettingsPanel.lua
 UI\Arrow.lua
 UI\ModernUI.lua
