@@ -77,7 +77,7 @@ function ModernUI:CreateMainWindow()
     -- Beautiful gradient overlay
     local bg = frame:CreateTexture(nil, "BACKGROUND")
     bg:SetAllPoints()
-    bg:SetTexture("Interface\\AddOns\\QuestMasterPro\\Textures\\GradientBG")
+    bg:SetTexture("Interface\\Buttons\\WHITE8X8")
     bg:SetVertexColor(unpack(self.Colors.background.solid))
     bg:SetGradientAlpha("VERTICAL",
         unpack(self.Colors.background.gradient_top),
@@ -91,7 +91,7 @@ function ModernUI:CreateMainWindow()
     header:SetPoint("TOPLEFT", 8, -8)
     header:SetPoint("TOPRIGHT", -8, -8)
     header:SetHeight(60)
-    header:SetTexture("Interface\\AddOns\\QuestMasterPro\\Textures\\HeaderGradient")
+    header:SetTexture("Interface\\Buttons\\WHITE8X8")
     header:SetVertexColor(0.0, 0.6, 0.9, 0.4)
 
     -- Logo/Icon (STUNNING)
@@ -184,7 +184,7 @@ function ModernUI:CreateProgressBar(parent)
     -- Shimmer effect overlay
     local shimmer = container:CreateTexture(nil, "OVERLAY")
     shimmer:SetAllPoints(progress)
-    shimmer:SetTexture("Interface\\AddOns\\QuestMasterPro\\Textures\\Shimmer")
+    shimmer:SetTexture("Interface\\Buttons\\WHITE8X8")
     shimmer:SetBlendMode("ADD")
     shimmer:SetAlpha(0.3)
 
