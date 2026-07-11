@@ -23,7 +23,8 @@ function Utils:GetPlayerPosition()
         return nil, nil, nil
     end
 
-    return position:GetXY(), mapID
+    local x, y = position:GetXY()
+    return x, y, mapID
 end
 
 -- Format coordinates
@@ -37,7 +38,7 @@ end
 -- Get distance to waypoint
 function Utils:GetDistanceToWaypoint(waypointX, waypointY)
     local playerX, playerY = self:GetPlayerPosition()
-    if not playerX or not waypointX then
+    if not playerX or not playerY or not waypointX or not waypointY then
         return nil
     end
 
@@ -60,8 +61,12 @@ function Utils:GetQuestInfo(questID)
         return nil
     end
 
-    local questInfo = C_QuestLog.GetInfo(C_QuestLog.GetLogIndexForQuestID(questID))
-    return questInfo
+    local questLogIndex = C_QuestLog.GetLogIndexForQuestID(questID)
+    if not questLogIndex then
+        return nil
+    end
+
+    return C_QuestLog.GetInfo(questLogIndex)
 end
 
 -- Check if quest is complete
