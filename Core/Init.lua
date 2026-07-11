@@ -1,5 +1,5 @@
 -- Azeroth Pilot Reloaded Pro - Core Initialization
--- Version: 1.0.0
+-- Version: 1.1.0
 
 -- Create global addon namespace
 AzerothPilot = AzerothPilot or {}
