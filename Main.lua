@@ -78,7 +78,7 @@ function SlashCmdList.QUESTMASTER(msg)
         print("  /qmp version - Show version info")
     elseif command == "version" or command == "v" then
         print("|cFF00D4FF╔════════════════════════════════════════════╗|r")
-        print("|cFF00D4FF║|r  |cFF00D4FFQuest|r|cFFFFD700Master Pro|r v1.0.0  |cFF00D4FF║|r")
+        print("|cFF00D4FF║|r  |cFF00D4FFQuest|r|cFFFFD700Master Pro|r v" .. AzerothPilot.Version .. "  |cFF00D4FF║|r")
         print("|cFF00D4FF╚════════════════════════════════════════════╝|r")
         print(" ")
         print("|cFF00FF00CRUSHING THE COMPETITION:|r")
@@ -209,9 +209,11 @@ end
 -- Initialize all systems when player logs in
 function AzerothPilot:OnPlayerLogin()
     -- Initialize all modules
+    AzerothPilot.PatchCompatibility:Initialize()
     AzerothPilot.Data.Routes:Initialize()
     AzerothPilot.Data.Legion:Initialize()
     AzerothPilot.Data.Professions:Initialize()
+    AzerothPilot.Data.Midnight:Initialize()
 
     -- Initialize advanced guides
     if AzerothPilot.Data.Achievements then AzerothPilot.Data.Achievements:Initialize() end
@@ -240,7 +242,7 @@ function AzerothPilot:OnPlayerLogin()
 
     -- Show welcome message
     self:Print("╔════════════════════════════════════════════╗")
-    self:Print("║  |cFF00D4FFQuest|r|cFFFFD700Master Pro|r v1.0  ║")
+    self:Print("║  |cFF00D4FFQuest|r|cFFFFD700Master Pro|r v" .. self.Version .. "  ║")
     self:Print("╚════════════════════════════════════════════╝")
     self:Print(" ")
     self:Print("|cFF00FF00✓|r STUNNING Modern UI - Better than Zygor!")

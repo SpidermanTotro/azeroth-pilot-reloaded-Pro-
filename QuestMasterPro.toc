@@ -1,8 +1,8 @@
-## Interface: 110002, 110005, 110007, 110200, 110205, 110207, 40400, 11502, 11503
+## Interface: 120007, 50504, 40402, 30404, 20505, 11508
 ## Title: |cFF00D4FFQuest|r|cFFFFD700Master Pro|r
 ## Notes: STUNNING UI! PTR-Integrated! All Professions! Achievements! Gold! M+! Better than Zygor - 100% FREE!
 ## Author: QuestMaster Pro Team
-## Version: 1.0.0
+## Version: 1.1.0
 ## SavedVariables: AzerothPilotDB
 ## SavedVariablesPerCharacter: AzerothPilotCharDB
 ## X-Category: Questing
@@ -18,6 +18,7 @@
 Core\Init.lua
 Core\Database.lua
 Core\Utils.lua
+Core\PatchCompatibility.lua
 Core\PTRIntegration.lua
 Core\TravelOptimizer.lua
 Core\QuestSkipLogic.lua
@@ -48,6 +49,7 @@ Data\ProfessionGuides.lua
 Data\ClassGuides.lua
 Data\MythicPlusGuides.lua
 Data\AdvancedGuides.lua
+Data\MidnightContent.lua
 
 # Main
 Main.lua
