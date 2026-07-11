@@ -92,7 +92,8 @@ function PTR:GatherQuestData(questID)
 
     -- Get current zone
     questData.zone = C_Map.GetBestMapForUnit("player")
-    questData.zoneName = C_Map.GetMapInfo(questData.zone)
+    local mapInfo = questData.zone and C_Map.GetMapInfo(questData.zone)
+    questData.zoneName = mapInfo and mapInfo.name or nil
 
     -- Get quest objectives
     local objectives = C_QuestLog.GetQuestObjectives(questID)
