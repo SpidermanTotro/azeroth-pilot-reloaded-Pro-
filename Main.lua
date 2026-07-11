@@ -214,11 +214,10 @@ function AzerothPilot:OnPlayerLogin()
     AzerothPilot.Data.Professions:Initialize()
 
     -- Initialize advanced guides
-    local AdvancedGuides = AzerothPilot.Data.AdvancedGuides or {}
-    if AdvancedGuides.Achievements then AdvancedGuides.Achievements:Initialize() end
-    if AdvancedGuides.GoldMaking then AdvancedGuides.GoldMaking:Initialize() end
-    if AdvancedGuides.PetBattles then AdvancedGuides.PetBattles:Initialize() end
-    if AdvancedGuides.Mounts then AdvancedGuides.Mounts:Initialize() end
+    if AzerothPilot.Data.Achievements then AzerothPilot.Data.Achievements:Initialize() end
+    if AzerothPilot.Data.GoldMaking then AzerothPilot.Data.GoldMaking:Initialize() end
+    if AzerothPilot.Data.PetBattles then AzerothPilot.Data.PetBattles:Initialize() end
+    if AzerothPilot.Data.Mounts then AzerothPilot.Data.Mounts:Initialize() end
 
     AzerothPilot.Guides.Engine:Initialize()
     AzerothPilot.Guides.QuestTracker:Initialize()
