@@ -5,7 +5,7 @@ return {
     -- Allow common WoW API and addon globals used across the codebase
     globals = {
     -- Add addon/core globals
-    "AzerothPilot", "QuestMasterPro", "AzerothPilotDB", "AzerothPilotCharDB", "QuestMasterProDB", "QuestMasterProCharDB",
+    "AzerothPilot", "QuestMasterPro", "QMP", "AzerothPilotDB", "AzerothPilotCharDB", "QuestMasterProDB", "QuestMasterProCharDB",
     -- Sample / exercise SavedVariables used by the learning templates
     "SampleAddonDB", "SampleAddonCharDB",
 
