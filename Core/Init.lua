@@ -12,6 +12,10 @@ if not QuestMasterPro then
     QuestMasterPro = AzerothPilot
 end
 
+-- Enhanced UI modules use the shorter QMP namespace.
+-- Keep it pointed at the same shared addon table to avoid nil-global failures.
+QMP = QMP or QuestMasterPro
+
 -- SavedVariables aliasing (safe no-op if globals already assigned by TOC)
 if not QuestMasterProDB and AzerothPilotDB then QuestMasterProDB = AzerothPilotDB end
 if not QuestMasterProCharDB and AzerothPilotCharDB then QuestMasterProCharDB = AzerothPilotCharDB end
