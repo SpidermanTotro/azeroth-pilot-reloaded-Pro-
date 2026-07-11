@@ -1,30 +1,40 @@
-name: Lint (luacheck)
+name: Lua validation
 
 on:
   push:
-    branches: [ main ]
+    branches: [main]
   pull_request:
-    branches: [ main ]
+    branches: [main]
+  workflow_dispatch:
+
+permissions:
+  contents: read
 
 jobs:
-  luacheck:
-    name: Luacheck
+  lua-validation:
+    name: Lua 5.1 syntax and Luacheck
     runs-on: ubuntu-latest
 
     steps:
       - uses: actions/checkout@v4
 
-      - name: Install Lua and LuaRocks
+      - name: Install Lua 5.1 and LuaRocks
         run: |
           sudo apt-get update
           sudo apt-get install -y lua5.1 luarocks
 
-      - name: Install luacheck
+      - name: Check Lua 5.1 syntax
+        shell: bash
         run: |
-          luarocks --local install luacheck 1.2.0 || luarocks install luacheck
+          while IFS= read -r -d '' file; do
+            echo "Checking $file"
+            luac5.1 -p "$file"
+          done < <(find . -type f -name '*.lua' -print0)
 
-      - name: Run luacheck
+      - name: Install Luacheck
         run: |
-          # add local luarocks bin to PATH if present
-          export PATH="$HOME/.luarocks/bin:$PATH"
-          luacheck . --config .luacheckrc
+          luarocks --lua-version=5.1 install luacheck 1.2.0 --local
+          echo "$HOME/.luarocks/bin" >> "$GITHUB_PATH"
+
+      - name: Run Luacheck
+        run: luacheck . --config .luacheckrc

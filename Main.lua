@@ -53,7 +53,7 @@ end
 
 -- QuestMaster Pro unified command handler
 function SlashCmdList.QUESTMASTER(msg)
-    local command, arg = msg:match("^(%S*)%s*(.-)$")
+    local command = msg:match("^(%S*)") or ""
     command = command:lower()
 
     if command == "" or command == "help" then

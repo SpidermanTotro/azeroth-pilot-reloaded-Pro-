@@ -94,7 +94,7 @@ function QuestSkip:EstimateQuestTime(questID)
 end
 
 -- Calculate XP per minute for a quest
-function QuestSkip:CalculateXPPerMinute(questID, questLevel)
+function QuestSkip:CalculateXPPerMinute(questID, _questLevel)
     local questInfo = C_QuestLog.GetQuestInfo(questID)
     if not questInfo then return 0 end
 
@@ -114,7 +114,7 @@ function QuestSkip:CalculateXPPerMinute(questID, questLevel)
 end
 
 -- Display skip recommendation
-function QuestSkip:ShowSkipRecommendation(questID, questName, reason)
+function QuestSkip:ShowSkipRecommendation(_questID, questName, reason)
     local message = string.format(
         "|cffff0000[SKIP RECOMMENDED]|r %s - |cffaaaaaa%s|r",
         questName or "Quest",

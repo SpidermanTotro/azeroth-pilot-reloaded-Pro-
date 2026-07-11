@@ -63,7 +63,7 @@ QMP.UI.Enhanced.Animations = {
         duration = duration or 0.8
 
         local originalScale = frame:GetScale()
-        frame:SetScript("OnUpdate", function(_, elapsed)
+        frame:SetScript("OnUpdate", function()
             local time = GetTime()
             local pulseScale = originalScale + (math.sin(time * (2 * math.pi / duration)) * (scale - originalScale))
             frame:SetScale(pulseScale)
@@ -86,8 +86,7 @@ QMP.UI.Enhanced.Animations = {
 
     sparkle = function(frame)
         -- Particle sparkle effect for level-ups!
-        local particles = {}
-        for i = 1, 20 do
+        for _ = 1, 20 do
             local particle = frame:CreateTexture(nil, "OVERLAY")
             particle:SetTexture("Interface\\Cooldown\\star4")
             particle:SetSize(16, 16)
@@ -154,7 +153,7 @@ function QMP.UI.Enhanced:CreateCircularXPTracker()
     QMP.UI.Enhanced.Animations.glow(frame, QMP.UI.Enhanced.Colors.primary, 0.3)
 
     -- Update function
-    frame:SetScript("OnUpdate", function(f, elapsed)
+    frame:SetScript("OnUpdate", function(f)
         local currentXP = UnitXP("player")
         local maxXP = UnitXPMax("player")
         local percent = (currentXP / maxXP) * 100

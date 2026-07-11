@@ -44,7 +44,10 @@ return {
     max_line_length = 140,
 
     -- Skip linting large data files to focus on code logic warnings
-    ignore = {"Data/*.lua"},
+    exclude_files = {"Data/*.lua"},
+
+    -- Colon-method declarations intentionally receive self even when a method does not need it
+    ignore = {"212/self"},
 
     -- Common Lua globals sometimes used in WoW addons
 }

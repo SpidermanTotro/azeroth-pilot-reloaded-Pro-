@@ -90,7 +90,6 @@ end
 -- Suggest optimal hearth location based on current zone and quest progression
 function Travel:SuggestHearthLocation()
     local zone = GetZoneText()
-    local subzone = GetSubZoneText()
 
     if Travel.optimalHearths[zone] then
         local suggestion = Travel.optimalHearths[zone]
