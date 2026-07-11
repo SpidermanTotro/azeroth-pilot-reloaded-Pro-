@@ -249,7 +249,7 @@ function GearAdvisor:Initialize()
 
     frame:SetScript("OnEvent", function(_, event, ...)
         if event == "QUEST_COMPLETE" then
-            local questID = ...
+            local questID = GetQuestID()
             if questID then
                 C_Timer.After(0.5, function()
                     GearAdvisor:AnalyzeQuestRewards(questID)

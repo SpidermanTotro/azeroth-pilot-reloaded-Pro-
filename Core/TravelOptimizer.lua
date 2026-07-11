@@ -74,7 +74,7 @@ Travel.optimalHearths = {
 -- Check if player's hearthstone is on cooldown
 function Travel:GetHearthCooldown()
     local start, duration = GetItemCooldown(6948) -- Hearthstone item ID
-    if start > 0 then
+    if start and duration and start > 0 then
         local remaining = duration - (GetTime() - start)
         return remaining > 0 and remaining or 0
     end

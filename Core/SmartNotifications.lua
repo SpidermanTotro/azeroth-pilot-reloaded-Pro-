@@ -279,9 +279,9 @@ function Notifications:Initialize()
 
         elseif event == "QUEST_TURNED_IN" then
             local questID = ...
-            local questInfo = C_QuestLog.GetQuestInfo(questID)
-            if questInfo then
-                Notifications:NotifyQuestComplete(questInfo.title)
+            local questTitle = C_QuestLog.GetTitleForQuestID(questID)
+            if questTitle then
+                Notifications:NotifyQuestComplete(questTitle)
             end
 
         elseif event == "LFG_PROPOSAL_SHOW" then

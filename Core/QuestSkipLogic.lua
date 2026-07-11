@@ -95,7 +95,7 @@ end
 
 -- Calculate XP per minute for a quest
 function QuestSkip:CalculateXPPerMinute(questID, _questLevel)
-    local questInfo = C_QuestLog.GetQuestInfo(questID)
+    local questInfo = AzerothPilot.Utils:GetQuestInfo(questID)
     if not questInfo then return 0 end
 
     -- Get quest XP reward
@@ -130,7 +130,7 @@ end
 
 -- Analyze quest when accepted
 function QuestSkip:AnalyzeQuest(questID)
-    local questInfo = C_QuestLog.GetInfo(questID)
+    local questInfo = AzerothPilot.Utils:GetQuestInfo(questID)
     if not questInfo then return end
 
     local questName = questInfo.title

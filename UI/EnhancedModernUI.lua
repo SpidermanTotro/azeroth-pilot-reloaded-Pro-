@@ -74,7 +74,7 @@ QMP.UI.Enhanced.Animations = {
         -- Add glowing border effect
         if not frame.glowTexture then
             frame.glowTexture = frame:CreateTexture(nil, "OVERLAY")
-            frame.glowTexture:SetTexture("Interface\\AddOns\\QuestMasterPro\\Textures\\Glow")
+            frame.glowTexture:SetTexture("Interface\\Cooldown\\star4")
             frame.glowTexture:SetAllPoints(frame)
             frame.glowTexture:SetBlendMode("ADD")
         end
@@ -122,13 +122,13 @@ function QMP.UI.Enhanced:CreateCircularXPTracker()
     -- Background circle
     frame.bg = frame:CreateTexture(nil, "BACKGROUND")
     frame.bg:SetAllPoints()
-    frame.bg:SetTexture("Interface\\AddOns\\QuestMasterPro\\Textures\\CircleBG")
+    frame.bg:SetTexture("Interface\\Buttons\\WHITE8X8")
     frame.bg:SetVertexColor(0.1, 0.1, 0.2, 0.9)
 
     -- Progress circle (animated!)
     frame.progress = frame:CreateTexture(nil, "ARTWORK")
     frame.progress:SetAllPoints()
-    frame.progress:SetTexture("Interface\\AddOns\\QuestMasterPro\\Textures\\CircleProgress")
+    frame.progress:SetTexture("Interface\\Buttons\\WHITE8X8")
     frame.progress:SetVertexColor(0.2, 0.6, 1.0, 1.0)
 
     -- Center text (level)
@@ -156,7 +156,7 @@ function QMP.UI.Enhanced:CreateCircularXPTracker()
     frame:SetScript("OnUpdate", function(f)
         local currentXP = UnitXP("player")
         local maxXP = UnitXPMax("player")
-        local percent = (currentXP / maxXP) * 100
+        local percent = maxXP > 0 and (currentXP / maxXP) * 100 or 100
 
         f.xpText:SetText(string.format("%.1f%%", percent))
 
@@ -166,8 +166,8 @@ function QMP.UI.Enhanced:CreateCircularXPTracker()
         f.progress:SetRotation(math.rad(rotation))
 
         -- Update ETA from XP tracker
-        if QMP.Core and QMP.Core.XPTracker and QMP.Core.XPTracker.GetTimeToLevel then
-            local eta = QMP.Core.XPTracker:GetTimeToLevel()
+        if QMP.XPTracker and QMP.XPTracker.EstimateTimeToLevel then
+            local _, eta = QMP.XPTracker:EstimateTimeToLevel()
             if eta then
                 f.etaText:SetText("ETA: " .. eta)
             end
@@ -257,7 +257,7 @@ function QMP.UI.Enhanced:CreateEnhancedArrow()
     frame.glow:SetVertexColor(0.2, 0.6, 1.0, 0.5)
 
     -- Pulsing animation for glow
-    QMP.UI.Enhanced.Animations.pulse(frame.glow, 1.2, 1.0)
+    QMP.UI.Enhanced.Animations.pulse(frame, 1.2, 1.0)
 
     -- Arrow texture
     frame.arrow = frame:CreateTexture(nil, "ARTWORK")
@@ -368,7 +368,7 @@ function QMP.UI.Enhanced:Init()
         self:ShowNotification(
             "QuestMaster Pro loaded! Better UI than $120/year Zygor - 100% FREE!",
             "success",
-            "Interface\\AddOns\\QuestMasterPro\\Textures\\Logo"
+            "Interface\\Icons\\Achievement_Boss_Ragnaros"
         )
     end)
 end
