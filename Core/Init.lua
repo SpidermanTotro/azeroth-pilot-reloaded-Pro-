@@ -32,6 +32,10 @@ AzerothPilot.Debug = false
 
 -- Initialization function
 function AzerothPilot:Initialize()
+    if self.Initialized then
+        return
+    end
+
     self:Print("Azeroth Pilot Reloaded Pro v" .. self.Version .. " loaded!")
     self:Print("The ultimate leveling guide - ahead of the game for 2025!")
 
@@ -61,6 +65,11 @@ function AzerothPilot:Initialize()
         }
     end
 
+    -- Keep compatibility SavedVariables synchronized after WoW has loaded them.
+    QuestMasterProDB = AzerothPilotDB
+    QuestMasterProCharDB = AzerothPilotCharDB
+    self.Initialized = true
+
     self:DebugPrint("Initialization complete")
 end
 
@@ -84,11 +93,15 @@ AzerothPilot.EventFrame:RegisterEvent("PLAYER_LOGIN")
 AzerothPilot.EventFrame:SetScript("OnEvent", function(_, event, ...)
     if event == "ADDON_LOADED" then
         local addonName = ...
-        -- support both old and new folder names so users can rename the folder without breaking
+        -- Support both release folder names. PLAYER_LOGIN below remains the
+        -- reliable fallback for GitHub ZIPs or other renamed addon folders.
         if addonName == "AzerothPilotReloadedPro" or addonName == "QuestMasterPro" then
             AzerothPilot:Initialize()
         end
     elseif event == "PLAYER_LOGIN" then
+        -- A renamed addon folder changes the ADDON_LOADED name. Ensure saved
+        -- variables and defaults exist before any login-time module uses them.
+        AzerothPilot:Initialize()
         AzerothPilot:OnPlayerLogin()
     end
 end)
