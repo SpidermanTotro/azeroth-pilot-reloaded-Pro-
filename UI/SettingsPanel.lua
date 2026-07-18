@@ -2,10 +2,10 @@
 -- Configuration interface for the addon
 
 AzerothPilot.UI.Settings = {}
-local Settings = AzerothPilot.UI.Settings
+local SettingsPanel = AzerothPilot.UI.Settings
 
 -- Create settings panel
-function Settings:CreatePanel()
+function SettingsPanel:CreatePanel()
     local panel = CreateFrame("Frame", "AzerothPilotSettingsPanel", UIParent)
     panel.name = "Azeroth Pilot Pro"
 
@@ -87,7 +87,7 @@ function Settings:CreatePanel()
 end
 
 -- Initialize settings
-function Settings:Initialize()
+function SettingsPanel:Initialize()
     self:CreatePanel()
     AzerothPilot:DebugPrint("Settings panel initialized")
 end
