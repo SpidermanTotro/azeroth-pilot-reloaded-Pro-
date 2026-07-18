@@ -190,7 +190,9 @@ for _, path in ipairs(arg) do
     assert(chunk, string.format("could not load %s: %s", path, loadError or "unknown error"))
 
     local ok, runtimeError = pcall(chunk)
-    assert(ok, string.format("error while loading %s: %s", path, runtimeError))
+    if not ok then
+        error(string.format("error while loading %s: %s", path, tostring(runtimeError)))
+    end
     loadedFiles = loadedFiles + 1
 end
 
